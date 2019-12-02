@@ -16,5 +16,6 @@ function login() {
     }
     xhr.open("POST", url,false);
     var f = JSON.stringify(values);
+    var a;
     xhr.send(f);
 }
