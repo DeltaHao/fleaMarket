@@ -32,9 +32,26 @@ function login() {
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
-    xhr_log.open("POST", url,false);
-    xhr_log.send(JSON.stringify(values_log));
-    console.log(values_log)
+    values_log = JSON.stringify(values_log)
+    $.ajax({
+            url: url,
+            type: "POST",
+            data: values_log,
+            dataType: "text",
+            success:function(responseTxt, statusTxt, xhr_log) {
+                JSON.parse(responseTxt);
+                // 
+            }
+        }
+
+    );
+
+
+    // xhr_log.open("POST", url,false);
+    // xhr_log.send(JSON.stringify(values_log));
+
+
+
 }
 
 // 提交待售物品表单
