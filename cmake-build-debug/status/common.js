@@ -1,4 +1,5 @@
 var url = "http://192.168.68.128:12000";
+
 // 提交注册表单
 function reg() {
     // var params = $("#regedit").serializeArray();
@@ -124,5 +125,5 @@ function WG_respond(goodname) {
     var values_wgres = {"op": "WG_respond", "goodname": goodname};
     values_wgres = JSON.stringify(values_wgres);
     xhr_wgres.open("POST", url,true);
-    xhr_wgres.send(walues_sgres);
+    xhr_wgres.send(values_wgres);
 }

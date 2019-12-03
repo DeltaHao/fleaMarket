@@ -9,16 +9,62 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css.map?_ijt=71g9q5csmrnl6illm56tlvsv4l">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-
-<div class="container">
-    <div class="py-5 text-center">
-        <h2>欲售物品发布</h2>
-        <p class="lead">在这里发布您想出售的物品信息。</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light title">
+    <a class="navbar-brand title">二手交易平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item headline">
+                <a class="nav-link" href="index.html"> 首页 </a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="needs.html">需求商品</a>
+            </li>
+            <li class="nav-item headline-current">
+                <a class="nav-link" href="sg_publish.html">发布商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="wg_publish.html">发布需求</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="#">个人中心</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="login.html">登录/注册</a>
+            </li>
+        </ul>
     </div>
+</nav>
 
+<div class="py-5 text-center">
+    <h2>欲售物品发布</h2>
+    <p class="lead">请填写您想出售的物品信息</p>
+</div>
+
+<div class="pg-main">
+        <div style="float: left">
+            <br>
+            <div>
+                <img src="images/upload.png" id="showImg" style="margin-left: 300px;margin-top: 50px;width: 200px;height: 200px">
+            </div>
+            <div>
+                <input type="file" name="img" id="img" style="margin-left: 300px;margin-top: 50px;">
+                <script>
+                    var input = document.getElementById("img");
+                    input.addEventListener('change', readFile, false);
+                </script>
+            </div>
+            <br>
+        </div>
+
+<div class="container" style="float: right;margin-top: -400px">
+    
     <div class="row">
 
         <div class="col-md-8 order-md-1">
@@ -26,59 +72,45 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="goodname">物品名</label>
-                        <input type="text" class="form-control" name="goodname" id="goodname" required>
+                        <label for="goodname" style="margin-left: 300px">物品名</label>
+                        <input type="text" name="goodname" id="goodname" style="width: 300px;height: 40px;margin-left: 300px" required>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="goodinfo">物品描述</label>
+                    <label for="goodinfo" style="margin-left: 300px">物品描述</label>
                     <div class="input-group">
-                        <textarea class="form-control" name="goodinfo" id="goodinfo"></textarea>
+                        <textarea name="goodinfo" id="goodinfo" style="width: 400px;height: 120px;margin-left: 300px"></textarea>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="price">物品价格</label>
-                    <input type="text" class="form-control" name="price" id="price" required>
+                    <label for="price" style="margin-left: 300px">物品价格</label>
+                    <input type="text" name="price" id="price" style="width: 300px;height: 40px;margin-left: 300px" required>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="type">物品类别</label>
-                        <select class="custom-select d-block w-100" name="type" id="type" required>
+                <div>
+                        <label for="type" style="margin-left: 300px">物品类别</label>
+                        <select name="type" id="type" style="width: 300px;height: 40px;margin-left: 300px" required>
                             <option value="">请选择...</option>
                             <option value="1">食品饮品</option>
                             <option value="2">书籍</option>
                             <option value="3">电子产品</option>
                             <option value="4">服饰</option>
-                            <option value="5">饰品</option>
-                            <option value="6">化妆品、护肤品</option>
-                            <option value="7">运动器材</option>
+                            <option value="5">化妆品</option>
+                            <option value="6">运动器材</option>
+                            <option value="7">日用品</option>
                             <option value="8">账号</option>
-                            <option value="9">日用小物品</option>
-                            <option value="10">其他</option>
+                            <option value="9">其他</option>
                         </select>
-                    </div>
                 </div>
-                <br>
-
-                <img src="" id="showImg">
-                <input type="file" name="img" id="img">
-
-                <script>
-                    var input = document.getElementById("img");
-                    input.addEventListener('change', readFile, false);
-                </script>
-
-
-                <br>
             </form>
 
-            <button class="btn btn-primary btn-lg btn-block" onclick="sg_publish()">发布</button>
+            <button class="btn btn-primary btn-lg btn-block" style="width: 300px;margin-top: 30px;margin-left: 230px" onclick="sg_publish()">发布</button>
 
         </div>
     </div>
+</div>
 </div>
 
 
