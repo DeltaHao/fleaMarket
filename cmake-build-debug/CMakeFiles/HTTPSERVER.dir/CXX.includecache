@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/haozl/CLionProjects/HTTPSERVER/epoll.h
-sys/epoll.h
--
-mysocket.h
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
-
 /home/haozl/CLionProjects/HTTPSERVER/http.cpp
 iostream
 -
@@ -22,25 +16,5 @@ string
 vector
 -
 fstream
--
-
-/home/haozl/CLionProjects/HTTPSERVER/main.cpp
-iostream
--
-vector
--
-epoll.h
-/home/haozl/CLionProjects/HTTPSERVER/epoll.h
-mysocket.h
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
-
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
-sys/socket.h
--
-arpa/inet.h
--
-unistd.h
--
-iostream
 -
 

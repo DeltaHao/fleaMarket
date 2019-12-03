@@ -28,18 +28,12 @@ string getResponseMessage(string &s){
     ifstream infile;
     infile.open("status"+filepath, ios::in);//打开文件
     if(!infile){
-        cout<<"open error!"<<endl;
-        exit(-1);
+        cout<<"open" << filepath << "error!"<<endl;
     }
 
     string httpHeader = "HTTP/1.1 200 OK\r\n";//响应报文头
     strings = split(filepath, '.');
-//    if(strings[strings.size()-1] == "html")
-//        httpHeader += "Content-Type: text/html\r\n";
-//    if(strings[strings.size()-1] == "js")
-//        httpHeader += "Content-Type: text/javascript\r\n";
-//    if(strings[strings.size()-1] == "css")
-//        httpHeader += "Content-Type: text/css\r\n";
+
     httpHeader += "\r\n";
     ostringstream tmp;
     tmp << infile.rdbuf();
