@@ -119,3 +119,10 @@ function SG_respond(goodname) {
     xhr_sgres.open("POST", url,true);
     xhr_sgres.send(values_sgres);
 }
+function WG_respond(goodname) {
+    var xhr_wgres = new XMLHttpRequest();
+    var values_wgres = {"op": "WG_respond", "goodname": goodname};
+    values_wgres = JSON.stringify(values_wgres);
+    xhr_wgres.open("POST", url,true);
+    xhr_wgres.send(walues_sgres);
+}
