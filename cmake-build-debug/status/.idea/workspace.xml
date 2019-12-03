@@ -17,7 +17,20 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="G:\作业\fleaMarket-frontEnd\cmake-build-debug\status\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1UNx7fYQUlKH3l1XCLIkvBio9Ul" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -66,10 +79,22 @@
       <workItem from="1575245464471" duration="35327000" />
       <workItem from="1575332592911" duration="2283000" />
       <workItem from="1575353842308" duration="6669000" />
+      <workItem from="1575364799181" duration="1969000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

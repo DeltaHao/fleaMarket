@@ -1,4 +1,4 @@
-
+var url = "http://192.168.68.128:12000";
 // 提交注册表单
 function reg() {
     // var params = $("#regedit").serializeArray();
@@ -12,8 +12,7 @@ function reg() {
     var xhr_reg = new XMLHttpRequest();
     var params = $("#regedit").serializeArray();
 
-    // 目标url
-    var url = "http://192.168.68.128:12000";
+
     var values_reg = { "op": "Register_auth" };
     for(x in params) {
         values_reg[params[x].name] = params[x].value;
@@ -27,8 +26,7 @@ function login() {
     var xhr_log = new XMLHttpRequest();
     var params = $("#loginedit").serializeArray();
 
-    // 目标url
-    var url = "http://192.168.68.128:12000";
+
     var values_log = { "op": "Login_auth" };
     for(x in params) {
         values_log[params[x].name] = params[x].value;
@@ -44,8 +42,7 @@ function sg_publish() {
     // 获取表单中内容
     var params = $("#sgedit").serializeArray();
     
-    // 目标url
-    var url = "http://192.168.68.128:12000";
+
     var values_sg = { "op": "SG_publish" };
     for(x in params) {
         values_sg[params[x].name] = params[x].value;
@@ -76,8 +73,7 @@ function wg_publish() {
     // 获取表单中内容
     var params = $("#wgedit").serializeArray();
 
-    // 目标url
-    var url = "http://192.168.68.128:12000";
+
     var values_wg = { "op": "WG_publish" };
     for(x in params) {
         values_wg[params[x].name] = params[x].value;
@@ -113,4 +109,13 @@ function readFile() {
     reader.onload = function(e){
         $('#showImg').attr('src', src);
     }
+}
+
+// 提交响应
+function SG_respond(goodname) {
+    var xhr_sgres = new XMLHttpRequest();
+    var values_sgres = {"op": "SG_respond", "goodname": goodname};
+    values_sgres = JSON.stringify(values_sgres);
+    xhr_sgres.open("POST", url,true);
+    xhr_sgres.send(values_sgres);
 }
