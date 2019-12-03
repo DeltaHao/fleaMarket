@@ -1,4 +1,4 @@
-var url = "http://192.168.68.128:12000";
+var url = "./";
 
 // 提交注册表单
 function reg() {
