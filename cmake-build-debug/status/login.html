@@ -2,28 +2,55 @@
 <html lang="zh-hans">
 <head>
     <meta charset="utf-8">
-
     <title>登录</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/style.css">
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="common.js"></script>
 </head>
 
-<body class="text-center">
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light title">
+    <a class="navbar-brand title">二手交易平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item headline">
+                <a class="nav-link" href="index.html"> 首页 </a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="needs.html">需求商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="#">发布商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="#">发布需求</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="#">个人中心</a>
+            </li>
+            <li class="nav-item headline-current">
+                <a class="nav-link" href="login.html">登录/注册</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+<div class="text-center">
+    <img src="../images/login.png" style="width: 100px;margin-top: 50px">
     <form id="loginedit">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-
         <label for="Username" class="sr-only">Username</label>
-        <input name="Username" id="Username" type="text" class="form-control" placeholder="Username" required autofocus>
+        <input name="Username" id="Username" type="text" placeholder="请输入用户名" style="width: 800px;margin-top: 50px" required autofocus>
 
         <label for="Password" class="sr-only">Password</label>
-        <input name="Password" id="Password" type="password" class="form-control" placeholder="Password" required>
+        <input name="Password" id="Password" type="password" placeholder="请输入密码" style="width: 800px;margin-top: 50px" required>
+
     </form>
-
-    <button id="loginform_submit" class="btn btn-lg btn-primary btn-block" onclick="login()">Sign in</button>
+    <button id="loginform_submit" class="btn btn-lg btn-primary btn-block" style="width: 200px;margin-top: 100px;margin-left: 666px" onclick="login()">登录</button>
+    <button id="regist_account"  style="width: 150px;margin-left: 650px" onclick="window.location.href='register.html'">注册新账号</button>
+</div>
 </body>
-
 </html>

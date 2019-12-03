@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>待售物品发布</title>
+
+    <script src="common.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>欲售物品发布</h2>
+        <p class="lead">在这里发布您想出售的物品信息。</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8 order-md-1">
+            <form id="sgedit" class="needs-validation" novalidate>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="goodname">物品名</label>
+                        <input type="text" class="form-control" name="goodname" id="goodname" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="goodinfo">物品描述</label>
+                    <div class="input-group">
+                        <textarea class="form-control" name="goodinfo" id="goodinfo"></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price">物品价格</label>
+                    <input type="text" class="form-control" name="price" id="price" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="type">物品类别</label>
+                        <select class="custom-select d-block w-100" name="type" id="type" required>
+                            <option value="">请选择...</option>
+                            <option value="1">食品饮品</option>
+                            <option value="2">书籍</option>
+                            <option value="3">电子产品</option>
+                            <option value="4">服饰</option>
+                            <option value="5">饰品</option>
+                            <option value="6">化妆品、护肤品</option>
+                            <option value="7">运动器材</option>
+                            <option value="8">账号</option>
+                            <option value="9">日用小物品</option>
+                            <option value="10">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+
+                <input type="file" name="img" id="img">
+                <img src="" id="showImg">
+                <script>
+                    var input = document.getElementById("img");
+                    input.addEventListener('change', readFile, false);
+                </script>
+
+
+                <br>
+            </form>
+
+            <button class="btn btn-primary btn-lg btn-block" onclick="sg_publish()">发布</button>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
