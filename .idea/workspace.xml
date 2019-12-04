@@ -12,8 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f84e983-4f57-4e22-9756-a272d00566d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" afterDir="false" />
@@ -24,18 +22,15 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mysql.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/http.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql.h" beforeDir="false" afterPath="$PROJECT_DIR$/mysql.h" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,22 +47,15 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../mysql" />
     <property name="restartRequiresConfirmation" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="HTTPSERVER" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="HTTPSERVER" TARGET_NAME="HTTPSERVER" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="HTTPSERVER" RUN_TARGET_NAME="HTTPSERVER">
@@ -75,6 +63,18 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,6 +91,7 @@
       <workItem from="1575438500382" duration="750000" />
       <workItem from="1575439277088" duration="27000" />
       <workItem from="1575441621240" duration="638000" />
+      <workItem from="1575446026972" duration="5475000" />
     </task>
     <servers />
   </component>
@@ -111,6 +112,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state width="1032" height="486" key="GridCell.Tab.0.bottom" timestamp="1575452232627">
+      <screen x="0" y="27" width="1078" height="1688" />
+    </state>
+    <state width="1032" height="486" key="GridCell.Tab.0.bottom/0.27.1078.1688@0.27.1078.1688" timestamp="1575452232627" />
+    <state width="1032" height="486" key="GridCell.Tab.0.center" timestamp="1575452232625">
+      <screen x="0" y="27" width="1078" height="1688" />
+    </state>
+    <state width="1032" height="486" key="GridCell.Tab.0.center/0.27.1078.1688@0.27.1078.1688" timestamp="1575452232625" />
+    <state width="1032" height="486" key="GridCell.Tab.0.left" timestamp="1575452232622">
+      <screen x="0" y="27" width="1078" height="1688" />
+    </state>
+    <state width="1032" height="486" key="GridCell.Tab.0.left/0.27.1078.1688@0.27.1078.1688" timestamp="1575452232622" />
+    <state width="1032" height="486" key="GridCell.Tab.0.right" timestamp="1575452232626">
+      <screen x="0" y="27" width="1078" height="1688" />
+    </state>
+    <state width="1032" height="486" key="GridCell.Tab.0.right/0.27.1078.1688@0.27.1078.1688" timestamp="1575452232626" />
     <state x="195" y="698" key="com.intellij.ide.util.TipDialog" timestamp="1575446027742">
       <screen x="0" y="27" width="1078" height="1688" />
     </state>

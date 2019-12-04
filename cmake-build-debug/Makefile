@@ -123,33 +123,6 @@ HTTPSERVER/fast:
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/build
 .PHONY : HTTPSERVER/fast
 
-database.o: database.cpp.o
-
-.PHONY : database.o
-
-# target to build an object file
-database.cpp.o:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.o
-.PHONY : database.cpp.o
-
-database.i: database.cpp.i
-
-.PHONY : database.i
-
-# target to preprocess a source file
-database.cpp.i:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.i
-.PHONY : database.cpp.i
-
-database.s: database.cpp.s
-
-.PHONY : database.s
-
-# target to generate assembly for a file
-database.cpp.s:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.s
-.PHONY : database.cpp.s
-
 http.o: http.cpp.o
 
 .PHONY : http.o
@@ -204,6 +177,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mysql.o: mysql.cpp.o
+
+.PHONY : mysql.o
+
+# target to build an object file
+mysql.cpp.o:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.o
+.PHONY : mysql.cpp.o
+
+mysql.i: mysql.cpp.i
+
+.PHONY : mysql.i
+
+# target to preprocess a source file
+mysql.cpp.i:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.i
+.PHONY : mysql.cpp.i
+
+mysql.s: mysql.cpp.s
+
+.PHONY : mysql.s
+
+# target to generate assembly for a file
+mysql.cpp.s:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.s
+.PHONY : mysql.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... HTTPSERVER"
 	@echo "... edit_cache"
-	@echo "... database.o"
-	@echo "... database.i"
-	@echo "... database.s"
 	@echo "... http.o"
 	@echo "... http.i"
 	@echo "... http.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mysql.o"
+	@echo "... mysql.i"
+	@echo "... mysql.s"
 .PHONY : help
 
 

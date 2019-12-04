@@ -7,7 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <json/json.h>
-
+#include "mysql.h"
 using namespace std;
 
 vector<string> split(string &s, const char flag){
@@ -23,27 +23,35 @@ vector<string> split(string &s, const char flag){
 
 string GETMethodResponse(string &filepath){
     ifstream infile;
-    infile.open("status"+filepath, ios::in);//打开文件
+    if (filepath.empty()) infile.open("status/index.html", ios::in);
+    else infile.open("status"+filepath, ios::in);//打开文件
     if(!infile){
-        cout<<"open" << filepath << "error!"<<endl;
+        infile.close();
+        cout<<"open " << filepath << " error!"<<endl;
+        string httpHeader = "HTTP/1.1 404 Not Found\r\n";//响应报文头
+        httpHeader += "\r\n";
+        string httpData = "<h1>404 not found</h1>";//报文内容
+        return httpHeader + httpData;
     }
-
-    string httpHeader = "HTTP/1.1 200 OK\r\n";//响应报文头
-    httpHeader += "\r\n";
-    ostringstream tmp;
-    tmp << infile.rdbuf();
-    string httpData = tmp.str();//报文内容
-    infile.close();
-    return httpHeader + httpData;
+    else{
+        string httpHeader = "HTTP/1.1 200 OK\r\n";//响应报文头
+        httpHeader += "\r\n";
+        ostringstream tmp;
+        tmp << infile.rdbuf();
+        string httpData = tmp.str();//报文内容
+        infile.close();
+        return httpHeader + httpData;
+    }
 }
 string POSTMethodResponse(string &JsonString){
     cout << JsonString <<endl;
     Json::Reader reader;
     Json::Value recvJsonValue;
     reader.parse(JsonString, recvJsonValue);
+    auto * qMysql = new Mysql();
+    qMysql->connect();
     if(recvJsonValue["op"] == "Register_auth"){
-
-        JsonString ="";
+        //qMysql->Register_auth();
     }
 
 
@@ -55,13 +63,15 @@ string POSTMethodResponse(string &JsonString){
     return httpHeader + httpData;
 }
 string getResponseMessage(string &requestMessage){
+
     vector<string> strings = split(requestMessage, ' ');
     if(strings[0] == "GET"){
         return GETMethodResponse(strings[1]);
     }
     if(strings[0] == "POST"){
-        strings = split(strings[strings.size()-1], '\n');
-        return POSTMethodResponse(strings[strings.size()-1]);
+        strings = split(strings[strings.size()-1], '{');
+        string str = "{"+strings[strings.size()-1];
+        return POSTMethodResponse(str);
     }
 }
 

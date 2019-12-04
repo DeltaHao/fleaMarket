@@ -83,31 +83,31 @@ CMakeFiles/HTTPSERVER.dir/http.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HTTPSERVER.dir/http.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/haozl/CLionProjects/HTTPSERVER/http.cpp -o CMakeFiles/HTTPSERVER.dir/http.cpp.s
 
-CMakeFiles/HTTPSERVER.dir/database.cpp.o: CMakeFiles/HTTPSERVER.dir/flags.make
-CMakeFiles/HTTPSERVER.dir/database.cpp.o: ../database.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HTTPSERVER.dir/database.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HTTPSERVER.dir/database.cpp.o -c /home/haozl/CLionProjects/HTTPSERVER/database.cpp
+CMakeFiles/HTTPSERVER.dir/mysql.cpp.o: CMakeFiles/HTTPSERVER.dir/flags.make
+CMakeFiles/HTTPSERVER.dir/mysql.cpp.o: ../mysql.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HTTPSERVER.dir/mysql.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HTTPSERVER.dir/mysql.cpp.o -c /home/haozl/CLionProjects/HTTPSERVER/mysql.cpp
 
-CMakeFiles/HTTPSERVER.dir/database.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HTTPSERVER.dir/database.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/haozl/CLionProjects/HTTPSERVER/database.cpp > CMakeFiles/HTTPSERVER.dir/database.cpp.i
+CMakeFiles/HTTPSERVER.dir/mysql.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HTTPSERVER.dir/mysql.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/haozl/CLionProjects/HTTPSERVER/mysql.cpp > CMakeFiles/HTTPSERVER.dir/mysql.cpp.i
 
-CMakeFiles/HTTPSERVER.dir/database.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HTTPSERVER.dir/database.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/haozl/CLionProjects/HTTPSERVER/database.cpp -o CMakeFiles/HTTPSERVER.dir/database.cpp.s
+CMakeFiles/HTTPSERVER.dir/mysql.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HTTPSERVER.dir/mysql.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/haozl/CLionProjects/HTTPSERVER/mysql.cpp -o CMakeFiles/HTTPSERVER.dir/mysql.cpp.s
 
 # Object files for target HTTPSERVER
 HTTPSERVER_OBJECTS = \
 "CMakeFiles/HTTPSERVER.dir/main.cpp.o" \
 "CMakeFiles/HTTPSERVER.dir/http.cpp.o" \
-"CMakeFiles/HTTPSERVER.dir/database.cpp.o"
+"CMakeFiles/HTTPSERVER.dir/mysql.cpp.o"
 
 # External object files for target HTTPSERVER
 HTTPSERVER_EXTERNAL_OBJECTS =
 
 HTTPSERVER: CMakeFiles/HTTPSERVER.dir/main.cpp.o
 HTTPSERVER: CMakeFiles/HTTPSERVER.dir/http.cpp.o
-HTTPSERVER: CMakeFiles/HTTPSERVER.dir/database.cpp.o
+HTTPSERVER: CMakeFiles/HTTPSERVER.dir/mysql.cpp.o
 HTTPSERVER: CMakeFiles/HTTPSERVER.dir/build.make
 HTTPSERVER: CMakeFiles/HTTPSERVER.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable HTTPSERVER"

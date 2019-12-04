@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/HTTPSERVER.dir/main.cpp.o CMakeFiles/HTTPSERVER.dir/http.cpp.o CMakeFiles/HTTPSERVER.dir/database.cpp.o  -o HTTPSERVER -Wl,-Bstatic -ljson -Wl,-Bdynamic 
+/usr/bin/c++  -g   CMakeFiles/HTTPSERVER.dir/main.cpp.o CMakeFiles/HTTPSERVER.dir/http.cpp.o CMakeFiles/HTTPSERVER.dir/mysql.cpp.o  -o HTTPSERVER -Wl,-Bstatic -ljson -Wl,-Bdynamic -lmysqlclient 
