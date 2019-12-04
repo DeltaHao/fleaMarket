@@ -44,18 +44,26 @@ string GETMethodResponse(string &filepath){
     }
 }
 string POSTMethodResponse(string &JsonString){
-    cout << JsonString <<endl;
+    //cout << JsonString <<endl;
     Json::Reader reader;
     Json::Value recvJsonValue;
     reader.parse(JsonString, recvJsonValue);
+
     auto * qMysql = new Mysql();
     qMysql->connect();
     if(recvJsonValue["op"] == "Register_auth"){
-        //qMysql->Register_auth();
+        string U_id = recvJsonValue["QQ"].toStyledString();
+        string U_name = recvJsonValue["Username"].toStyledString();
+        string U_password = recvJsonValue["password1"].toStyledString();
+        string U_info = recvJsonValue["Username"].toStyledString();
+        JsonString = qMysql->Register_auth(U_id,U_name,U_password,U_info);
+    }
+    if(recvJsonValue["op"] == "Login_auth"){
+        string U_id = recvJsonValue["QQ"].toStyledString();
+        string U_password = recvJsonValue["password"].toStyledString();
     }
 
-
-    cout << "sendJson:" << JsonString << endl;
+    //cout << "sendJson:" << JsonString << endl;
 
     string httpHeader = "HTTP/1.1 200 OK\r\n";//响应报文头
     httpHeader += "\r\n";

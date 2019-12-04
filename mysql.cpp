@@ -49,8 +49,11 @@ string Mysql::query(const string & SqlSentence) {
 
 string Mysql::Register_auth(string &U_id,  string &U_name,
                              string &U_password,  string &U_info) {
-    cout<<U_id<<endl;
-    cout<<U_name<<endl;
-    cout<<U_password<<endl;
-    cout<<U_info<<endl;
+    string sqlStr = "insert into User values(" + U_id +","+U_name+","+U_password+","+U_info+");";
+    if(execute(sqlStr))
+        return "{return:true}";
+    else return "{return:false}";
+}
+string Mysql::Login_auth(string &U_id, string &U_password){
+
 }

@@ -6,27 +6,35 @@
 
 #IncludeRegexTransform: 
 
-/home/haozl/CLionProjects/HTTPSERVER/epoll.h
-sys/epoll.h
--
-mysocket.h
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
-
-/home/haozl/CLionProjects/HTTPSERVER/main.cpp
+/home/haozl/CLionProjects/HTTPSERVER/http.cpp
 iostream
 -
-epoll.h
-/home/haozl/CLionProjects/HTTPSERVER/epoll.h
-mysocket.h
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
+sstream
+-
+string
+-
+vector
+-
+fstream
+-
+json/json.h
+-
+mysql.h
+/home/haozl/CLionProjects/HTTPSERVER/mysql.h
 
-/home/haozl/CLionProjects/HTTPSERVER/mysocket.h
-sys/socket.h
+/home/haozl/CLionProjects/HTTPSERVER/mysql.cpp
+mysql/mysql.h
 -
-arpa/inet.h
--
-unistd.h
--
+mysql.h
+/home/haozl/CLionProjects/HTTPSERVER/mysql.h
+
+/home/haozl/CLionProjects/HTTPSERVER/mysql.h
 iostream
+-
+mysql/mysql.h
+-
+vector
+-
+json/json.h
 -
 

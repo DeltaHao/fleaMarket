@@ -47,7 +47,6 @@ int main(){
 
                     //解析http请求报文
                     string sendMessage = getResponseMessage(recvMessage);
-                    cout<<sendMessage<<endl;
                     Send(sendMessage, monitor->Set[i].data.fd);
 
                     close(monitor->Set[i].data.fd);

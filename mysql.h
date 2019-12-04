@@ -25,7 +25,7 @@ public:
     //执行有返回值的sql语句，返回值为Json string
     string query(const string &SqlSentence);
     //注册
-    static string Register_auth( string &U_id,  string &U_name,
+    string Register_auth( string &U_id,  string &U_name,
                           string &U_password,  string &U_info);
-
+    string Login_auth(string &U_id, string &U_name);
 };
