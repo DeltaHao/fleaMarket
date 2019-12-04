@@ -4,7 +4,7 @@
     <list default="true" id="c1bf72a6-de8e-457a-ab99-567a522e7aae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,13 +48,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\作业\trade" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\作业\fleaMarket\fleaMarket\cmake-build-debug\status" />
       <recent name="G:\作业\trade" />
       <recent name="G:\作业\trade\css" />
       <recent name="G:\作业\trade\images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\作业\trade" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -85,7 +86,7 @@
       <workItem from="1575353842308" duration="6669000" />
       <workItem from="1575364799181" duration="1969000" />
       <workItem from="1575369115317" duration="12061000" />
-      <workItem from="1575384733837" duration="1274000" />
+      <workItem from="1575384733837" duration="4877000" />
     </task>
     <servers />
   </component>

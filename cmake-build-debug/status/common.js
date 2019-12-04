@@ -32,18 +32,25 @@ function login() {
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
-    values_log = JSON.stringify(values_log)
+    values_log = JSON.stringify(values_log);
     $.ajax({
             url: url,
             type: "POST",
             data: values_log,
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
-                JSON.parse(responseTxt);
-                // 
+                // var ret = JSON.parse(responseTxt);
+                // 接受返回数据并处理
+                // var auth = ret["auth"];
+                var auth = "1";
+                if(auth == "1") {
+                    window.location.href = "index.html?id=15";
+                }
+                else {
+                    alert("wrong");
+                }
             }
         }
-
     );
 
 
