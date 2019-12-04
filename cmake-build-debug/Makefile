@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/haozl/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/haozl/Downloads/clion-2019.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/haozl/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/haozl/Downloads/clion-2019.3/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/haozl/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/haozl/Downloads/clion-2019.3/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/haozl/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/haozl/Downloads/clion-2019.3/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,33 @@ HTTPSERVER: cmake_check_build_system
 HTTPSERVER/fast:
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/build
 .PHONY : HTTPSERVER/fast
+
+database.o: database.cpp.o
+
+.PHONY : database.o
+
+# target to build an object file
+database.cpp.o:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.o
+.PHONY : database.cpp.o
+
+database.i: database.cpp.i
+
+.PHONY : database.i
+
+# target to preprocess a source file
+database.cpp.i:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.i
+.PHONY : database.cpp.i
+
+database.s: database.cpp.s
+
+.PHONY : database.s
+
+# target to generate assembly for a file
+database.cpp.s:
+	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/database.cpp.s
+.PHONY : database.cpp.s
 
 http.o: http.cpp.o
 
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... HTTPSERVER"
 	@echo "... edit_cache"
+	@echo "... database.o"
+	@echo "... database.i"
+	@echo "... database.s"
 	@echo "... http.o"
 	@echo "... http.i"
 	@echo "... http.s"

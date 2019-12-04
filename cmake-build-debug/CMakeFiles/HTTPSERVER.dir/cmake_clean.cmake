@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/HTTPSERVER.dir/database.cpp.o"
   "CMakeFiles/HTTPSERVER.dir/http.cpp.o"
   "CMakeFiles/HTTPSERVER.dir/main.cpp.o"
   "HTTPSERVER"

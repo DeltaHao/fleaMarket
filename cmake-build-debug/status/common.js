@@ -1,3 +1,4 @@
+var url = "./"
 
 // 提交注册表单
 function reg() {
@@ -12,8 +13,6 @@ function reg() {
     var xhr_reg = new XMLHttpRequest();
     var params = $("#regedit").serializeArray();
 
-    // 目标url
-    var url = "http://192.168.68.128:12000";
     var values_reg = { "op": "Register_auth" };
     for(x in params) {
         values_reg[params[x].name] = params[x].value;
@@ -27,16 +26,25 @@ function login() {
     var xhr_log = new XMLHttpRequest();
     var params = $("#loginedit").serializeArray();
 
-    // 目标url
-    var url = "http://192.168.68.128:12000";
+
     var values_log = { "op": "Login_auth" };
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
-    xhr_log.open("POST", url,false);
-    xhr_log.send(JSON.stringify(values_log));
-    console.log(values_log)
+    values_log = JSON.stringify(values_log)
+    $.ajax({
+            url: url,
+            type: "POST",
+            data: values_log,
+            dataType: "text",
+            success:function(responseTxt, statusTxt, xhr_log) {
+                console.log(responseTxt, statusTxt, xhr_log);
+            }
+        }
+
+    );
 }
+
 
 // 提交待售物品表单
 function sg_publish() {
@@ -45,7 +53,6 @@ function sg_publish() {
     var params = $("#sgedit").serializeArray();
     
     // 目标url
-    var url = "http://192.168.68.128:12000";
     var values_sg = { "op": "SG_publish" };
     for(x in params) {
         values_sg[params[x].name] = params[x].value;
@@ -77,7 +84,6 @@ function wg_publish() {
     var params = $("#wgedit").serializeArray();
 
     // 目标url
-    var url = "http://192.168.68.128:12000";
     var values_wg = { "op": "WG_publish" };
     for(x in params) {
         values_wg[params[x].name] = params[x].value;
