@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1bf72a6-de8e-457a-ab99-567a522e7aae" name="Default Changelist" comment="" />
+    <list default="true" id="c1bf72a6-de8e-457a-ab99-567a522e7aae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +21,20 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="G:\作业\fleaMarket-frontEnd\cmake-build-debug\status\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1UNx7fYQUlKH3l1XCLIkvBio9Ul" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -31,13 +48,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\作业\trade" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\作业\fleaMarket\fleaMarket\cmake-build-debug\status" />
       <recent name="G:\作业\trade" />
       <recent name="G:\作业\trade\css" />
       <recent name="G:\作业\trade\images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\作业\trade" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -66,10 +84,26 @@
       <workItem from="1575245464471" duration="35327000" />
       <workItem from="1575332592911" duration="2283000" />
       <workItem from="1575353842308" duration="6669000" />
+      <workItem from="1575364799181" duration="1969000" />
+      <workItem from="1575369115317" duration="12061000" />
+      <workItem from="1575384733837" duration="4877000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

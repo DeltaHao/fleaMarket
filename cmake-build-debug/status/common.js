@@ -1,3 +1,4 @@
+
 var url = "./"
 
 // 提交注册表单
@@ -12,6 +13,7 @@ function reg() {
     // $.post("register.html", values_reg);
     var xhr_reg = new XMLHttpRequest();
     var params = $("#regedit").serializeArray();
+
 
     var values_reg = { "op": "Register_auth" };
     for(x in params) {
@@ -31,18 +33,37 @@ function login() {
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
-    values_log = JSON.stringify(values_log)
+
+    values_log = JSON.stringify(values_log);
+
     $.ajax({
             url: url,
             type: "POST",
             data: values_log,
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
-                console.log(responseTxt, statusTxt, xhr_log);
+
+                // var ret = JSON.parse(responseTxt);
+                // 接受返回数据并处理
+                // var auth = ret["auth"];
+                var auth = "1";
+                if(auth == "1") {
+                    window.location.href = "index.html?id=15";
+                }
+                else {
+                    alert("wrong");
+                }
             }
         }
-
     );
+
+
+    // xhr_log.open("POST", url,false);
+    // xhr_log.send(JSON.stringify(values_log));
+
+
+
+
 }
 
 
@@ -52,7 +73,7 @@ function sg_publish() {
     // 获取表单中内容
     var params = $("#sgedit").serializeArray();
     
-    // 目标url
+
     var values_sg = { "op": "SG_publish" };
     for(x in params) {
         values_sg[params[x].name] = params[x].value;
@@ -83,7 +104,7 @@ function wg_publish() {
     // 获取表单中内容
     var params = $("#wgedit").serializeArray();
 
-    // 目标url
+
     var values_wg = { "op": "WG_publish" };
     for(x in params) {
         values_wg[params[x].name] = params[x].value;
@@ -119,4 +140,20 @@ function readFile() {
     reader.onload = function(e){
         $('#showImg').attr('src', src);
     }
+}
+
+// 提交响应
+function SG_respond(goodname) {
+    var xhr_sgres = new XMLHttpRequest();
+    var values_sgres = {"op": "SG_respond", "goodname": goodname};
+    values_sgres = JSON.stringify(values_sgres);
+    xhr_sgres.open("POST", url,true);
+    xhr_sgres.send(values_sgres);
+}
+function WG_respond(goodname) {
+    var xhr_wgres = new XMLHttpRequest();
+    var values_wgres = {"op": "WG_respond", "goodname": goodname};
+    values_wgres = JSON.stringify(values_wgres);
+    xhr_wgres.open("POST", url,true);
+    xhr_wgres.send(values_wgres);
 }

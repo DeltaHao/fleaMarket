@@ -5,6 +5,29 @@
     <title>二手交易平台</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        var addTab = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
+            "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <h5 class=\"card-title\" style=\"text-align: center\">黑框眼镜</h5>\n" +
+            "            <p class=\"price\">1s</p>\n" +
+            "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
+            "        </div>\n" +
+            "    </div>";
+        function testRequest() {
+            $.get(
+                "test.html",
+                function () {
+                    // $("#itemcontent").append(addTab);
+                    $(addTab).appendTo("#itemcontent");
+                    console.log(addTab);
+                },
+                "text"
+            );
+        }
+        setInterval(testRequest, 1000);
+    </script>
 </head>
 
 <body>
@@ -22,13 +45,13 @@
                 <a class="nav-link" href="needs.html">需求商品</a>
             </li>
             <li class="nav-item headline">
-                <a class="nav-link" href="sg_publish.html">发布商品</a>
+                <a class="nav-link" href="#">发布商品</a>
             </li>
             <li class="nav-item headline">
-                <a class="nav-link" href="wg_publish.html">发布需求</a>
+                <a class="nav-link" href="#">发布需求</a>
             </li>
             <li class="nav-item headline">
-                <a class="nav-link" href="personal.html">个人中心</a>
+                <a class="nav-link" href="#">个人中心</a>
             </li>
             <li class="nav-item headline">
                 <a class="nav-link" href="login.html">登录/注册</a>
@@ -55,7 +78,8 @@
 </div>
 
 <div class="card-group" style="margin-top: 100px;margin-left: 200px;margin-right: 100px">
-    <div class="card" style="float: left;width: 24rem">
+
+    <div class="card" style="float: left;width: 24rem" id="itemcontent">
         <img src="images/glasses.jpg" class="card-img-top" alt="..." height="180">
         <div class="card-body">
             <h5 class="card-title" style="text-align: center">黑框眼镜</h5>
@@ -63,30 +87,9 @@
             <a href="#" class="btn btn-primary" style="float: right">查看详情</a>
         </div>
     </div>
-    <div class="card" style="float: left;width: 24rem;margin-left: 20px">
-        <img src="images/paper-100.jpg" class="card-img-top" alt="..." height="180">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align: center">100元纸币</h5>
-            <p class="price">￥100</p>
-            <a href="#" class="btn btn-primary" style="float: right">查看详情</a>
-        </div>
-    </div>
-    <div class="card" style="float: left;width: 24rem;margin-left: 20px">
-        <img src="images/paper-1.jpg" class="card-img-top" alt="..." height="180">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align: center">1元纸币</h5>
-            <p class="price">￥1</p>
-            <a href="#" class="btn btn-primary" style="float: right">查看详情</a>
-        </div>
-    </div>
-    <div class="card" style="float: left;width: 24rem;margin-left: 20px">
-        <img src="images/coin-0.1.jpg" class="card-img-top" alt="..." height="180">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align: center">1角硬币</h5>
-            <p class="price">￥0.1</p>
-            <a href="#" class="btn btn-primary" style="float: right">查看详情</a>
-        </div>
-    </div>
+
+
+
 </div>
 
 </body>
