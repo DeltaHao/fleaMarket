@@ -2,7 +2,6 @@
 // Created by haozl on 2019/12/2.
 //
 #include <iostream>
-#include <vector>
 #include "epoll.h"
 #include "mysocket.h"
 
@@ -45,12 +44,11 @@ int main(){
                         cout << "连接中断" << endl;
                         continue;
                     }
-                    cout<<"收到报文:"<<endl;
-                    cout<<recvMessage<<endl;
 
                     //解析http请求报文
                     string sendMessage = getResponseMessage(recvMessage);
                     Send(sendMessage, monitor->Set[i].data.fd);
+
                     close(monitor->Set[i].data.fd);
 
                     todoNum--;//未完成事件减一

@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/database.cpp">
+			<Option target="HTTPSERVER"/>
+		</Unit>
 		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/epoll.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
@@ -94,6 +97,9 @@
 			<Option target="HTTPSERVER"/>
 		</Unit>
 		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysocket.h">
+			<Option target="HTTPSERVER"/>
+		</Unit>
+		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysql.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
 		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/CMakeLists.txt">

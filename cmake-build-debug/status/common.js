@@ -1,4 +1,5 @@
-var url = "./";
+
+var url = "./"
 
 // 提交注册表单
 function reg() {
@@ -32,13 +33,16 @@ function login() {
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
+
     values_log = JSON.stringify(values_log);
+
     $.ajax({
             url: url,
             type: "POST",
             data: values_log,
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
+
                 // var ret = JSON.parse(responseTxt);
                 // 接受返回数据并处理
                 // var auth = ret["auth"];
@@ -59,7 +63,9 @@ function login() {
 
 
 
+
 }
+
 
 // 提交待售物品表单
 function sg_publish() {
