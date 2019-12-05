@@ -8,6 +8,3 @@ CMakeFiles/HTTPSERVER.dir/main.cpp.o: ../epoll.h
 CMakeFiles/HTTPSERVER.dir/main.cpp.o: ../main.cpp
 CMakeFiles/HTTPSERVER.dir/main.cpp.o: ../mysocket.h
 
-CMakeFiles/HTTPSERVER.dir/mysql.cpp.o: ../mysql.cpp
-CMakeFiles/HTTPSERVER.dir/mysql.cpp.o: ../mysql.h
-

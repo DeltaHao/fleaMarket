@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/haozl/CLionProjects/HTTPSERVER/http.cpp" "/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o"
   "/home/haozl/CLionProjects/HTTPSERVER/main.cpp" "/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/main.cpp.o"
-  "/home/haozl/CLionProjects/HTTPSERVER/mysql.cpp" "/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/mysql.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -13,14 +13,26 @@
   <component name="ChangeListManager">
     <list default="true" id="3f84e983-4f57-4e22-9756-a272d00566d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/mysql.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/mysql.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/mysql.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/temp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/http.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/http.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mysql.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql.h" beforeDir="false" afterPath="$PROJECT_DIR$/mysql.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +58,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mysql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
@@ -84,7 +96,12 @@
       <workItem from="1575439277088" duration="27000" />
       <workItem from="1575441621240" duration="638000" />
       <workItem from="1575446026972" duration="6234000" />
-      <workItem from="1575453360702" duration="7866000" />
+      <workItem from="1575453360702" duration="9921000" />
+      <workItem from="1575524451632" duration="4596000" />
+      <workItem from="1575539658003" duration="5687000" />
+      <workItem from="1575551519125" duration="383000" />
+      <workItem from="1575552863887" duration="3274000" />
+      <workItem from="1575556206049" duration="1369000" />
     </task>
     <servers />
   </component>

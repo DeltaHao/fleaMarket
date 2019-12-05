@@ -177,33 +177,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-mysql.o: mysql.cpp.o
-
-.PHONY : mysql.o
-
-# target to build an object file
-mysql.cpp.o:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.o
-.PHONY : mysql.cpp.o
-
-mysql.i: mysql.cpp.i
-
-.PHONY : mysql.i
-
-# target to preprocess a source file
-mysql.cpp.i:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.i
-.PHONY : mysql.cpp.i
-
-mysql.s: mysql.cpp.s
-
-.PHONY : mysql.s
-
-# target to generate assembly for a file
-mysql.cpp.s:
-	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/mysql.cpp.s
-.PHONY : mysql.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -219,9 +192,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... mysql.o"
-	@echo "... mysql.i"
-	@echo "... mysql.s"
 .PHONY : help
 
 

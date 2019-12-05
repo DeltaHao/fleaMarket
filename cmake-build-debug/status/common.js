@@ -29,8 +29,8 @@ function login() {
     var params = $("#loginedit").serializeArray();
 
 
-    var values_log = { "op": "Login_auth" };
-    for(x in params) {
+    var values_log = {"op": "Login_auth"};
+    for (x in params) {
         values_log[params[x].name] = params[x].value;
     }
 
@@ -41,32 +41,33 @@ function login() {
             type: "POST",
             data: values_log,
             dataType: "text",
-            success:function(responseTxt, statusTxt, xhr_log) {
-                responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
+            success: function (responseTxt, statusTxt, xhr_log) {
+                responseTxt = responseTxt.substring(0, responseTxt.indexOf('}') + 1);
                 console.log(responseTxt);
                 var ret = JSON.parse(responseTxt);
                 console.log(ret);
 
-                // 接受返回数据并处理
-                // // var auth = ret["auth"];
-                // var auth = "1";
-                // if(auth == "1") {
-                //     window.location.href = "index.html";
-                // }
-                // else {
-                //     alert("wrong");
-                // }
+                // var auth = ret["auth"];
+                switch (ret["@return"]) {
+                    case ("0"): {
+                        alert("用户不存在！请检查输入的QQ号。");
+                        break;
+                    }
+                    case ("1"): {
+                        alert("用户名与密码不匹配！");
+                        break;
+                    }
+                    case ("2"): {
+                        alert("登陆成功！即将跳转至首页。");
+                        window.location.href = "index.html";
+                        //#("#logstatus").text(values_log["Username"]);
+                        break;
+                    }
+
+                }
             }
         }
     );
-
-
-    // xhr_log.open("POST", url,false);
-    // xhr_log.send(JSON.stringify(values_log));
-
-
-
-
 }
 
 
@@ -92,12 +93,13 @@ function sg_publish() {
         for(var pair of formData.entries()) {
             values_sg[pair[0]] = pair[1];
         }
-        values_sg = JSON.stringify(values_sg);
-        xhr_sg.open("POST", url,false);
-        xhr_sg.send(values_sg);
     };
 
-    reader_sg.readAsDataURL(file);
+
+    values_sg = JSON.stringify(values_sg);
+    xhr_sg.open("POST", url,false);
+    xhr_sg.send(values_sg);
+    //reader_sg.readAsDataURL(file);
 }
 
 

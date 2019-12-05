@@ -96,9 +96,6 @@
 		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysocket.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysql.cpp">
-			<Option target="HTTPSERVER"/>
-		</Unit>
 		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysql.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
