@@ -50,10 +50,18 @@ string Mysql::query(const string & SqlSentence) {
 string Mysql::Register_auth(string &U_id,  string &U_name,
                              string &U_password,  string &U_info) {
     string sqlStr = "insert into User values(" + U_id +","+U_name+","+U_password+","+U_info+");";
-    if(execute(sqlStr))
-        return "{return:true}";
+    if(execute(sqlStr)){
+        string ret = "{Username:" + U_name + ",return:true}";
+        return ret;
+    }
     else return "{return:false}";
 }
 string Mysql::Login_auth(string &U_id, string &U_password){
-
+    string sqlStr = "set @return=1;";
+    execute(sqlStr);
+    sqlStr = "call VerifyUser(@return,"+ U_id +","+U_password+");";
+    execute(sqlStr);
+    string ret = query("select @return");
+    cout << ret << endl;
+    return ret;
 }

@@ -42,17 +42,20 @@ function login() {
             data: values_log,
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
+                responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
+                console.log(responseTxt);
+                var ret = JSON.parse(responseTxt);
+                console.log(ret);
 
-                // var ret = JSON.parse(responseTxt);
                 // 接受返回数据并处理
-                // var auth = ret["auth"];
-                var auth = "1";
-                if(auth == "1") {
-                    window.location.href = "index.html?id=15";
-                }
-                else {
-                    alert("wrong");
-                }
+                // // var auth = ret["auth"];
+                // var auth = "1";
+                // if(auth == "1") {
+                //     window.location.href = "index.html";
+                // }
+                // else {
+                //     alert("wrong");
+                // }
             }
         }
     );

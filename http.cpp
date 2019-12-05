@@ -60,7 +60,8 @@ string POSTMethodResponse(string &JsonString){
     }
     if(recvJsonValue["op"] == "Login_auth"){
         string U_id = recvJsonValue["QQ"].toStyledString();
-        string U_password = recvJsonValue["password"].toStyledString();
+        string U_password = recvJsonValue["Password"].toStyledString();
+        JsonString = qMysql->Login_auth(U_id, U_password);
     }
 
     //cout << "sendJson:" << JsonString << endl;
