@@ -31,7 +31,7 @@ int main(){
                 if(monitor->Set[i].data.fd == pServer->fd){
                     //如果从listen套接字监听到事件， 说明有客户端连接
                     auto * pClient = new ConnectSocket(pServer);
-                    cout <<"有浏览器发来请求："<<pClient->getAddr()<<endl;
+                    cout<<pClient->getAddr()<<endl;
                     monitor->add(pClient->fd);//将新的connect套接字加入监听
 
                     todoNum--;//未完成事件减一
