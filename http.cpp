@@ -74,11 +74,10 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "query_SG"){
         JsonString = qMysql->query("select count(*) as count from Salegood;");
         JsonString += qMysql->query("select * from Salegood;");
-        cout<<JsonString<<endl;
     }
     if(recvJsonValue["op"] == "query_WG"){
         JsonString = qMysql->query("select count(*) as count from Wantedgood;");
-        JsonString += qMysql->query("select SG_id,SG_name,SG_info,SG_type,SG_price,U_id,SG_publish_time from Wantedgood;");
+        JsonString += qMysql->query("select * from Wantedgood;");
     }
     if(recvJsonValue["op"] == "SG_publish"){
         string U_id = recvJsonValue["U_id"].toStyledString();//缺少用户QQ需要前端传过来

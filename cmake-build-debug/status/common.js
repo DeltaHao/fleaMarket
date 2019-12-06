@@ -159,37 +159,7 @@ function login() {
 
 }
 
-function canvasDataURL(base64){
-    var img=new Image();
-    img.src=base64;
-    img.onload=function(){
-        //默认按照比例压缩
-        var scale=this.width/this.height;
-        //规定压缩后的大小
-        var canvasHeight=180;
-        var canvasWidth=canvasWidth*scale;
-        //生成canvas
-        var canvas=document.createElement('canvas');
-        var ctx=canvas.getContext('2d');
-        //创建节点属性
-        canvas.width=canvasWidth;
-        canvas.height=canvasHeight;
-        var anw=document.createAttribute('width');
-        anw.nodeValue=canvasWidth;
-        var anh=document.createAttribute('height');
-        anh.nodeValue=canvasHeight;
-        canvas.setAttributeNode(anw);
-        canvas.setAttributeNode(anh);
-        ctx.drawImage(this,0,0,canvasWidth,canvasHeight);
-        //图像质量,值越小，所绘制出的图像越模糊
-        var quality=0.92;
-        var base64String=canvas.toDataURL('img/jpeg',quality);
-        return base64String;
-    }
-}
-
 function sg_publish() {
-    var xhr_sg = new XMLHttpRequest();
     // 获取表单中内容
     var params = $("#sgedit").serializeArray();
 
@@ -204,16 +174,25 @@ function sg_publish() {
     var reader_sg = new FileReader();
 
     reader_sg.onload = function(e) {
-        var image = canvasDataURL(e.target.result)
         var formData = new FormData();
-        formData.append("image", image);
+        formData.append("image", e.target.result);
 
         for(var pair of formData.entries()) {
             values_sg[pair[0]] = pair[1];
         }
         values_sg = JSON.stringify(values_sg);
-        xhr_sg.open("POST", url ,true);
-        xhr_sg.send(" "+values_sg);
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: " "+values_sg,
+            dataType: "text",
+            success: function (responseTxt, statusTxt, xhr_log) {
+                if(responseTxt == "true") {
+                    window.alert("发布成功!");
+                    window.location.href = "index.html";
+                }
+            }
+        })
     };
 
     reader_sg.readAsDataURL(file);
@@ -270,8 +249,6 @@ function WG_respond(goodname) {
 
 // index.html requesting goods from server
 function showItems(amount, items) {
-    // console.log(amount, items);
-    // console.log(UserQQ);
     var x = 0;
     while (x < amount) {
         var addItem1, addItem2, addItem3, addItem4;
@@ -306,7 +283,7 @@ function showItems(amount, items) {
                 "    </div>";
         } else {
             var addTab1 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+                "        <img src=" + addItem1["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
                 "        <div class=\"card-body\">\n" +
                 "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem1["SG_name"] + "</h5>\n" +
                 "            <p class=\"price\">" + addItem1["SG_price"] + "</p>\n" +
@@ -319,7 +296,7 @@ function showItems(amount, items) {
                 "    </div>";
         } else {
             var addTab2 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+                "        <img src=" + addItem2["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
                 "        <div class=\"card-body\">\n" +
                 "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem2["SG_name"] + "</h5>\n" +
                 "            <p class=\"price\">" + addItem2["SG_price"] + "</p>\n" +
@@ -332,7 +309,7 @@ function showItems(amount, items) {
                 "    </div>";
         } else {
             var addTab3 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+                "        <img src=" + addItem3["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
                 "        <div class=\"card-body\">\n" +
                 "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem3["SG_name"] + "</h5>\n" +
                 "            <p class=\"price\">" + addItem3["SG_price"] + "</p>\n" +
@@ -345,7 +322,7 @@ function showItems(amount, items) {
                 "    </div>";
         } else {
             var addTab4 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+                "        <img src=" + addItem4["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
                 "        <div class=\"card-body\">\n" +
                 "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem4["SG_name"] + "</h5>\n" +
                 "            <p class=\"price\">" + addItem4["SG_price"] + "</p>\n" +
@@ -372,14 +349,14 @@ function query_SG() {
             // test response
             // responseTxt = "{\"count\":\"3\"}\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n";
             // 去掉结尾乱码，拆分为数量和商品信息
-            console.log(responseTxt);
+            // console.log(responseTxt);
             responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
             var amount = responseTxt.substring(0, responseTxt.indexOf('}')+1);
             responseTxt = responseTxt.replace(amount, "");
             responseTxt = responseTxt.substring(1, responseTxt.length-1) + "}";
-            responseTxt = responseTxt.split("\\n");
-            // console.log(amount);
-            amount = JSON.parse(amount);
+            responseTxt = responseTxt.split("\n");
+
+            amount = JSON.parse(amount)
             amount = amount["count"];
             showItems(amount, responseTxt);
         },
