@@ -363,3 +363,20 @@ function query_SG() {
         dataType: "text"
     });
 }
+
+function logout() {
+    delCookie(1);
+    var logTab = window.document.getElementById("logstatus");
+    logTab.innerHTML = "登录/注册";
+    logTab.src = "login.html";
+}
+
+function checkLogStatus() {
+    var cookieInfo = getCookie(1);
+    if(cookieInfo != 0) { // is login
+        var logTab = window.document.getElementById("logstatus");
+        logTab.innerHTML = cookieInfo["U_name"] + ", 登出";
+        logTab.src = "index.html";
+        logTab.onclick = logout;
+    }
+}

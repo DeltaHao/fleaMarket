@@ -34,7 +34,7 @@
                 <a class="nav-link" href="#">个人中心</a>
             </li>
             <li class="nav-item headline">
-                <a class="nav-link" href="login.html">登录/注册</a>
+                <a class="nav-link" href="login.html" id="logstatus">登录/注册</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -53,7 +53,9 @@
     </div>
 </div>
 
-
-
 </body>
+<script>
+    window.onload = query_SG;
+    window.onload = checkLogStatus();
+</script>
 </html>
