@@ -8,101 +8,11 @@
     <script src="common.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script>
-        function showItems(amount, items) {
-            // console.log(amount, items);
-            var x = 0;
-            while (x < amount) {
-                var addItem1, addItem2, addItem3, addItem4;
-                if(x+3 == amount) { // 3 left to show
-                    addItem1 = JSON.parse(items[x]);
-                    addItem2 = JSON.parse(items[x+1]);
-                    addItem3 = JSON.parse(items[x+2]);
-                    addItem4 = {SG_id: " ", SG_info: " ", SG_name: " ", SG_price: " ", SG_type: " "};
-                }
-                else if (x+2 == amount) {
-                    addItem1 = JSON.parse(items[x]);
-                    addItem2 = JSON.parse(items[x+1]);
-                    addItem3 = {};
-                    addItem4 = {};
-                }
-                else if (x+1 == amount) {
-                    addItem1 = JSON.parse(items[x]);
-                    addItem2 = {};
-                    addItem3 = {};
-                    addItem4 = {};
-                }
-                else  {
-                    addItem1 = JSON.parse(items[x]);
-                    addItem2 = JSON.parse(items[x+1]);
-                    addItem3 = JSON.parse(items[x+2]);
-                    addItem4 = JSON.parse(items[x+3]);
-                }
-                console.log(addItem1, addItem2, addItem3, addItem4);
-                x += 4;
-                var addTab1 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                    "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                    "        <div class=\"card-body\">\n" +
-                    "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem1["SG_name"] + "</h5>\n" +
-                    "            <p class=\"price\">" + addItem1["SG_price"] + "</p>\n" +
-                    "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                    "        </div>\n" +
-                    "    </div>\n";
-                var addTab2 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                    "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                    "        <div class=\"card-body\">\n" +
-                    "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem2["SG_name"] + "</h5>\n" +
-                    "            <p class=\"price\">" + addItem2["SG_price"] + "</p>\n" +
-                    "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                    "        </div>\n" +
-                    "    </div>\n";
-                var addTab3 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                    "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                    "        <div class=\"card-body\">\n" +
-                    "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem3["SG_name"] + "</h5>\n" +
-                    "            <p class=\"price\">" + addItem3["SG_price"] + "</p>\n" +
-                    "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                    "        </div>\n" +
-                    "    </div>\n";
-                var addTab4 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                    "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                    "        <div class=\"card-body\">\n" +
-                    "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem4["SG_name"] + "</h5>\n" +
-                    "            <p class=\"price\">" + addItem4["SG_price"] + "</p>\n" +
-                    "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                    "        </div>\n" +
-                    "    </div>";
-                $(addTab1).appendTo("#col1");
-                $(addTab2).appendTo("#col2");
-                $(addTab3).appendTo("#col3");
-                $(addTab4).appendTo("#col4");
-            }
-
-        }
-        function query_SG() {
-            var query_SG = {};
-            query_SG["op"] = "query_SG";
-            $.ajax({
-                type: 'POST',
-                url: "./",
-                data: JSON.stringify(query_SG),
-                success: function (responseTxt, statusTxt, xhr_log) {
-                    // responseTxt = "{\"count\":\"3\"}\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n";
-                    // 去掉结尾乱码，拆分为数量和商品信息
-
-                    responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
-                    var amount = responseTxt.substring(0, responseTxt.indexOf('}')+1);
-                    responseTxt = responseTxt.replace(amount, "");
-                    responseTxt = responseTxt.substring(1, responseTxt.length-1) + "}";
-                    responseTxt = responseTxt.split("\\n");
-                    console.log(amount);
-                    amount = JSON.parse(amount);
-                    amount = amount["count"];
-                    showItems(amount, responseTxt);
-                },
-                dataType: "text"
-            });
-        }
         window.onload = query_SG;
+        //var U_cookie = document.cookie;
+        // console.log(U_cookie);
+        //console.log(getCookie(1));
+        //document.getElementById("logstatus").innerText = U_cookie["U_name"];
     </script>
 </head>
 

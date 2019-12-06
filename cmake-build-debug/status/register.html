@@ -43,13 +43,15 @@
     <img src="images/regist.png" style="width: 100px;margin-top: 50px">
     <form id="regedit">
 
-        <input type="text" placeholder="请输入您的用户名" name="Username" maxlength="150" id="Username" style="width: 800px;margin-top: 40px" required autofocus>
+        <input type="text" placeholder="请输入您的用户名" name="U_name" maxlength="150" id="U_name" style="width: 800px;margin-top: 40px" required autofocus>
 
-        <input type="text" placeholder="请输入您的QQ号" name="QQ" maxlength="11" id="QQ" style="width: 800px;margin-top: 40px" required>
+        <input type="text" placeholder="请输入您的QQ号" name="U_id" maxlength="11" id="U_id" style="width: 800px;margin-top: 40px" required>
 
-        <input type="password" placeholder="请输入您的密码" name="password1" id="password1" style="width: 800px;margin-top: 40px" required>
+        <textarea placeholder="请输入您的自我介绍" name="U_info" maxlength="140" id="U_info" style="width: 800px; height: 200px; margin-top: 40px" required></textarea>
 
-        <input type="password" placeholder="请再次输入您的密码" name="password2" id="password2" style="width: 800px;margin-top: 40px" required>
+        <input type="password" placeholder="请输入您的密码" name="U_password" id="U_password" style="width: 800px;margin-top: 40px" required>
+
+        <input type="password" placeholder="请再次输入您的密码" name="U_password_r" id="U_password_r" style="width: 800px;margin-top: 40px" required>
 
     </form>
     <button id="regform_submit" class="btn btn-lg btn-primary btn-block" style="width: 200px;margin-top: 80px;margin-left: 666px" onclick="reg()">注册</button>

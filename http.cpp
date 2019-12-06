@@ -47,6 +47,7 @@ string POSTMethodResponse(string &JsonString){
     Json::Reader reader;
     Json::Value recvJsonValue;
     reader.parse(JsonString, recvJsonValue);
+
     //连接数据库
     auto * qMysql = new Mysql();
     qMysql->connect();
@@ -56,10 +57,9 @@ string POSTMethodResponse(string &JsonString){
         string U_password = recvJsonValue["U_password"].toStyledString();
         string U_info = recvJsonValue["U_info"].toStyledString();
 
-
         string sqlStr = "insert into User values(" + U_id +","+U_name+","+U_password+","+U_info+");";
-        if(!qMysql->execute(sqlStr)) JsonString =  "{return:false}";
-        else JsonString =  "{return:true}";
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
     }
     if(recvJsonValue["op"] == "Login_auth"){
         string U_id = recvJsonValue["U_id"].toStyledString();
@@ -74,10 +74,11 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "query_SG"){
         JsonString = qMysql->query("select count(*) as count from Salegood;");
         JsonString += qMysql->query("select * from Salegood;");
+        cout<<JsonString<<endl;
     }
     if(recvJsonValue["op"] == "query_WG"){
         JsonString = qMysql->query("select count(*) as count from Wantedgood;");
-        JsonString += qMysql->query("select * from Wantedgood;");
+        JsonString += qMysql->query("select SG_id,SG_name,SG_info,SG_type,SG_price,U_id,SG_publish_time from Wantedgood;");
     }
     if(recvJsonValue["op"] == "SG_publish"){
         string U_id = recvJsonValue["U_id"].toStyledString();//缺少用户QQ需要前端传过来
@@ -85,15 +86,15 @@ string POSTMethodResponse(string &JsonString){
         string SG_info = recvJsonValue["SG_info"].toStyledString();
         string SG_price = recvJsonValue["SG_price"].toStyledString();
         string SG_type = recvJsonValue["SG_type"].toStyledString();
-        string SG_image = recvJsonValue["image"].toStyledString();
+        string image = recvJsonValue["image"].toStyledString();
 
-        string sqlStr = "insert into Salegood(SG_name, SG_info, SG_price, SG_type, SG_image, U_id) values("
-                        + SG_name + "," + SG_info +"," + SG_price + "," +SG_type+","+SG_image + "," + U_id +");";
+        string sqlStr = "insert into Salegood(SG_name, SG_info, SG_price, SG_type, image, U_id) values("
+                        + SG_name + "," + SG_info +"," + SG_price + "," +SG_type+","+ image + "," + U_id +");";
         cout << sqlStr << endl;
-        if(!qMysql->execute(sqlStr)) JsonString =  "{return:false}";
-        else JsonString =  "{return:true}";
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
     }
-    if(recvJsonValue["op"] == "SG_publish"){
+    if(recvJsonValue["op"] == "WG_publish"){
         string U_id = recvJsonValue["U_id"].toStyledString();//用户QQ
         string WG_name = recvJsonValue["WG_name"].toStyledString();
         string WG_info = recvJsonValue["WG_info"].toStyledString();
@@ -102,8 +103,8 @@ string POSTMethodResponse(string &JsonString){
         string sqlStr = "insert into Wangtedgood(WG_name, WG_info, WG_type, U_id) values("
                         + WG_name + "," + WG_info +"," + WG_type + "," + U_id +");";
         cout << sqlStr << endl;
-        if(!qMysql->execute(sqlStr)) JsonString =  "{return:false}";
-        else JsonString =  "{return:true}";
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
     }
     if(recvJsonValue["op"] == "SG_response"){//响应别人发布的物品
         string U_id = recvJsonValue["U_id"].toStyledString();//用户QQ
@@ -112,8 +113,8 @@ string POSTMethodResponse(string &JsonString){
         string sqlStr = "insert into SG_response values("
                         + U_id + "," + SG_id + ",NOW());";
         cout << sqlStr << endl;
-        if(!qMysql->execute(sqlStr)) JsonString =  "{return:false}";
-        else JsonString =  "{return:true}";
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
     }
     if(recvJsonValue["op"] == "WG_response"){//响应别人发布的物品
         string U_id = recvJsonValue["U_id"].toStyledString();//用户QQ
@@ -122,8 +123,36 @@ string POSTMethodResponse(string &JsonString){
         string sqlStr = "insert into WG_response values("
                         + U_id + "," + WG_id + ",NOW());";
         cout << sqlStr << endl;
-        if(!qMysql->execute(sqlStr)) JsonString =  "{return:false}";
-        else JsonString =  "{return:true}";
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
+    }
+    if(recvJsonValue["op"] == "confirm_SG_deal"){//确认交易完成(由买家，即响应者确认)
+        string buyer_id = recvJsonValue["U_id"].toStyledString();
+        string G_id = recvJsonValue["SG_id"].toStyledString();
+        string sqlStr = "select U_id from SG_publish where SG_id = "+G_id+";";
+        string tmpStr = qMysql->query(sqlStr);
+        Json::Value tmpVal;
+        reader.parse(tmpStr,tmpVal);
+        string seller_id = tmpVal["U_id"].toStyledString();
+
+        sqlStr = "insert into Deallog values("+buyer_id+","+seller_id+","+G_id+",now());";
+        cout << sqlStr << endl;
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
+    }
+    if(recvJsonValue["op"] == "confirm_WG_deal"){//确认交易完成(由买家，即发布者确认)
+        string buyer_id = recvJsonValue["U_id"].toStyledString();
+        string G_id = recvJsonValue["WG_id"].toStyledString();
+        string sqlStr = "select U_id from WG_publish where WG_id = "+G_id+";";
+        string tmpStr = qMysql->query(sqlStr);
+        Json::Value tmpVal;
+        reader.parse(tmpStr,tmpVal);
+        string seller_id = tmpVal["U_id"].toStyledString();
+
+        sqlStr = "insert into Deallog values("+buyer_id+","+seller_id+","+G_id+",now());";
+        cout << sqlStr << endl;
+        if(!qMysql->execute(sqlStr)) JsonString =  "false";
+        else JsonString =  "true";
     }
     if(recvJsonValue["op"] == "get_SG_response_Users"){//获得响应某物品的所有用户
         string SG_id = recvJsonValue["SG_id"].toStyledString();
@@ -160,10 +189,26 @@ string POSTMethodResponse(string &JsonString){
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
     }
-    if(recvJsonValue["op"] == "confirm_SG_deal"){//确认交易完成
-        string buyer_id = recvJsonValue["U_id"].toStyledString();
-        string G_id = recvJsonValue["SG_id"].toStyledString();
+    if(recvJsonValue["op"] == "query_SG_by_User"){//查询某人发布的物品
+        string U_id = recvJsonValue["U_id"].toStyledString();
 
+        string sqlStr = "select * from Salegood where U_id = "+U_id+";";
+        cout <<sqlStr<<endl;
+        JsonString = qMysql->query(sqlStr);
+    }
+    if(recvJsonValue["op"] == "query_WG_by_User"){//查询某人发布的物品
+        string U_id = recvJsonValue["U_id"].toStyledString();
+
+        string sqlStr = "select * from Wantedgood where U_id = "+U_id+";";
+        cout <<sqlStr<<endl;
+        JsonString = qMysql->query(sqlStr);
+    }
+    if(recvJsonValue["op"] == "query_dealLog_by_User"){
+        string U_id = recvJsonValue["U_id"].toStyledString();
+
+        string sqlStr = "select * from Deallog where buyer_id = "+U_id+" or seller_id="+U_id+";";
+        cout <<sqlStr<<endl;
+        JsonString = qMysql->query(sqlStr);
     }
 
 
@@ -180,8 +225,8 @@ string getResponseMessage(string &requestMessage){
         return GETMethodResponse(strings[1]);
     }
     if(strings[0] == "POST"){
-        strings = split(strings[strings.size()-1], '{');
-        string str = "{"+strings[strings.size()-1];
+        //string image = strings[strings.size()-2];
+        string str = strings[strings.size()-1];
         return POSTMethodResponse(str);
     }
 }

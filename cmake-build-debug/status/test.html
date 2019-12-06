@@ -7,21 +7,53 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-        var addTab = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
+
+        var addTab1 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
             "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
             "        <div class=\"card-body\">\n" +
-            "            <h5 class=\"card-title\" style=\"text-align: center\">黑框眼镜</h5>\n" +
-            "            <p class=\"price\">1s</p>\n" +
+            "            <h5 class=\"card-title\" style=\"text-align: center\">" + items + "</h5>\n" +
+            "            <p class=\"price\"> + + </p>\n" +
+            "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
+            "        </div>\n" +
+            "    </div>\n";
+        var addTab2 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
+            "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <h5 class=\"card-title\" style=\"text-align: center\"> + + </h5>\n" +
+            "            <p class=\"price\"> + + </p>\n" +
+            "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
+            "        </div>\n" +
+            "    </div>\n";
+        var addTab3 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
+            "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <h5 class=\"card-title\" style=\"text-align: center\"> + + </h5>\n" +
+            "            <p class=\"price\"> + + </p>\n" +
+            "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
+            "        </div>\n" +
+            "    </div>\n";
+        var addTab4 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
+            "        <img src=\"images/glasses.jpg\" class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
+            "        <div class=\"card-body\">\n" +
+            "            <h5 class=\"card-title\" style=\"text-align: center\"> + + </h5>\n" +
+            "            <p class=\"price\"> + + </p>\n" +
             "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
             "        </div>\n" +
             "    </div>";
+
+
         function testRequest() {
             $.get(
                 "test.html",
                 function () {
                     // $("#itemcontent").append(addTab);
-                    $(addTab).appendTo("#itemcontent");
-                    console.log(addTab);
+
+                    $(addTab1).appendTo("#col1");
+                    $(addTab2).appendTo("#col2");
+                    $(addTab3).appendTo("#col3");
+                    $(addTab4).appendTo("#col4");
+
+
                 },
                 "text"
             );
@@ -79,14 +111,10 @@
 
 <div class="card-group" style="margin-top: 100px;margin-left: 200px;margin-right: 100px">
 
-    <div class="card" style="float: left;width: 24rem" id="itemcontent">
-        <img src="images/glasses.jpg" class="card-img-top" alt="..." height="180">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align: center">黑框眼镜</h5>
-            <p class="price">1s</p>
-            <a href="#" class="btn btn-primary" style="float: right">查看详情</a>
-        </div>
-    </div>
+    <div class="card" style="float: left;width: 24rem" id="col1"></div>
+    <div class="card" style="float: left;width: 24rem" id="col2"></div>
+    <div class="card" style="float: left;width: 24rem" id="col3"></div>
+    <div class="card" style="float: left;width: 24rem" id="col4"></div>
 
 
 

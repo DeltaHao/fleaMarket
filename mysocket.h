@@ -76,7 +76,7 @@ public:
 };
 
 std::string Receive(int fd){
-    char recvBuf[1024];
+    char recvBuf[1024*1024];
     int r = read(fd, recvBuf, sizeof(recvBuf));
     if(r == 0){
         return "";

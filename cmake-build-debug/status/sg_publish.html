@@ -53,9 +53,9 @@
                 <img src="images/upload.png" id="showImg" style="margin-left: 300px;margin-top: 50px;width: 200px;height: 200px">
             </div>
             <div>
-                <input type="file" name="img" id="img" style="margin-left: 300px;margin-top: 50px;">
+                <input type="file" name="image" id="image" style="margin-left: 300px;margin-top: 50px;">
                 <script>
-                    var input = document.getElementById("img");
+                    var input = document.getElementById("image");
                     input.addEventListener('change', readFile, false);
                 </script>
             </div>
@@ -71,26 +71,26 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="goodname" style="margin-left: 300px">物品名</label>
-                        <input type="text" name="goodname" id="goodname" style="width: 300px;height: 40px;margin-left: 300px" required>
+                        <label for="SG_name" style="margin-left: 300px">物品名</label>
+                        <input type="text" name="SG_name" id="SG_name" style="width: 300px;height: 40px;margin-left: 300px" required>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="goodinfo" style="margin-left: 300px">物品描述</label>
+                    <label for="SG_info" style="margin-left: 300px">物品描述</label>
                     <div class="input-group">
-                        <textarea name="goodinfo" id="goodinfo" style="width: 400px;height: 120px;margin-left: 300px"></textarea>
+                        <textarea name="SG_info" id="SG_info" style="width: 400px;height: 120px;margin-left: 300px"></textarea>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" style="margin-left: 300px">物品价格</label>
-                    <input type="text" name="price" id="price" style="width: 300px;height: 40px;margin-left: 300px" required>
+                    <label for="SG_price" style="margin-left: 300px">物品价格</label>
+                    <input type="text" name="SG_price" id="SG_price" style="width: 300px;height: 40px;margin-left: 300px" required>
                 </div>
 
                 <div>
-                        <label for="type" style="margin-left: 300px">物品类别</label>
-                        <select name="type" id="type" style="width: 300px;height: 40px;margin-left: 300px" required>
+                        <label for="SG_type" style="margin-left: 300px">物品类别</label>
+                        <select name="SG_type" id="SG_type" style="width: 300px;height: 40px;margin-left: 300px" required>
                             <option value="">请选择...</option>
                             <option value="1">食品饮品</option>
                             <option value="2">书籍</option>

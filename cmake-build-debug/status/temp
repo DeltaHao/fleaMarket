@@ -1,0 +1,18 @@
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        // var item = "1";
+        var r = Math.random()*1000;
+        var addTab = "<button value=\"1\" id=\"testtab\">" + r.toString() + "</button>";
+        function testRequest() {
+            $.get(
+                "test.html",
+                function (data) {
+                    // $("#test").text(item);
+                    // item += "item";
+                    $("#testtab").append(addTab);
+                },
+                "text"
+            );
+        }
+        setInterval(testRequest, 1000);
+    </script>
