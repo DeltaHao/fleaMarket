@@ -75,6 +75,10 @@ string POSTMethodResponse(string &JsonString){
         JsonString = qMysql->query("select count(*) as count from Salegood;");
         JsonString += qMysql->query("select * from Salegood;");
     }
+    if(recvJsonValue["op"] == "query_SG_by_G_id"){
+        JsonString = qMysql->query("select count(*) as count from Salegood;");
+        JsonString += qMysql->query("select * from Salegood;");
+    }
     if(recvJsonValue["op"] == "query_WG"){
         JsonString = qMysql->query("select count(*) as count from Wantedgood;");
         JsonString += qMysql->query("select * from Wantedgood;");
@@ -99,7 +103,7 @@ string POSTMethodResponse(string &JsonString){
         string WG_info = recvJsonValue["WG_info"].toStyledString();
         string WG_type = recvJsonValue["WG_type"].toStyledString();
 
-        string sqlStr = "insert into Wangtedgood(WG_name, WG_info, WG_type, U_id) values("
+        string sqlStr = "insert into Wantedgood(WG_name, WG_info, WG_type, U_id) values("
                         + WG_name + "," + WG_info +"," + WG_type + "," + U_id +");";
         cout << sqlStr << endl;
         if(!qMysql->execute(sqlStr)) JsonString =  "false";
@@ -120,7 +124,7 @@ string POSTMethodResponse(string &JsonString){
         string WG_id = recvJsonValue["WG_id"].toStyledString();//商品id
 
         string sqlStr = "insert into WG_response values("
-                        + U_id + "," + WG_id + ",NOW());";
+                        + U_id + "," + WG_id + ",NOW(),0);";
         cout << sqlStr << endl;
         if(!qMysql->execute(sqlStr)) JsonString =  "false";
         else JsonString =  "true";
@@ -224,8 +228,8 @@ string getResponseMessage(string &requestMessage){
         return GETMethodResponse(strings[1]);
     }
     if(strings[0] == "POST"){
-        //string image = strings[strings.size()-2];
         string str = strings[strings.size()-1];
+        cout<<str<<endl;
         return POSTMethodResponse(str);
     }
 }

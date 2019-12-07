@@ -91,6 +91,7 @@
       <workItem from="1575527415960" duration="1732000" />
       <workItem from="1575548082210" duration="4488000" />
       <workItem from="1575597003098" duration="8954000" />
+      <workItem from="1575708872537" duration="4388000" />
     </task>
     <servers />
   </component>
@@ -115,17 +116,9 @@
       <screen x="67" y="27" width="1853" height="930" />
     </state>
     <state x="657" y="222" key="run.anything.popup/67.27.1853.930@67.27.1853.930" timestamp="1575550685809" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/common.js</url>
-          <line>240</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="656" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1575711984766">
+      <screen x="67" y="27" width="1853" height="930" />
+    </state>
+    <state x="656" y="227" width="672" height="678" key="search.everywhere.popup/67.27.1853.930@67.27.1853.930" timestamp="1575711984766" />
   </component>
 </project>

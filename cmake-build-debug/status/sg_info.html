@@ -34,7 +34,7 @@
                 <a class="nav-link" href="#">个人中心</a>
             </li>
             <li class="nav-item headline">
-                <a class="nav-link" href="login.html">登录/注册</a>
+                <a class="nav-link" href="login.html" id="logstatus">登录/注册</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -43,17 +43,43 @@
         </form>
     </div>
 </nav>
+<main role="main" class="container">
+    <div class="media" style="margin-left: 160px; margin-right: 160px; margin-top: 100px;">
+        <img src="favicon.ico" class="mr-3" alt="..." style="height: 200px; width: 200px" id="Image">
 
-<div class="media" style="margin-left: 160px; margin-right: 160px; margin-top: 100px;">
-    <img src="favicon.ico" class="mr-3" alt="..." style="height: 200px">
-    <div class="media-body">
-        <h3 class="mt-0" id="goodname">商品名称</h3>
-        sdasdadasdsad
-        <button onclick="SG_respond(this.value)" value="商品名称"></button>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <div class="media-body">
+                <h3 class="mt-0" id="Name">商品名称</h3>
+            </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">价格</strong>
+                <b id="Price"></b>
+            </p>
+        </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">类型</strong>
+                <b id="Type"></b>
+            </p>
+        </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">描述</strong>
+                <b id="Info"></b>
+            </p>
+        </div>
+        <small class="d-block text-right mt-3">
+            <button onclick="SG_respond(this.value)" id="Response">我想购买</button>
+        </small>
     </div>
-</div>
+    </div>
 
+</main>
 
 
 </body>
+<script>
+    window.onload = checkLogStatus();
+</script>
 </html>

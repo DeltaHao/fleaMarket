@@ -79,13 +79,10 @@ function reg() {
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
                 // responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
-                console.log(responseTxt);
                 if (responseTxt == "false") {
                     alert(values_reg["ErrorInfo"]);
-                    console.log(values_reg["password1"]);
                 }
                 else {
-                    console.log(values_reg);
                     alert("注册成功！即将跳转至首页。");
                     var cookieinfo = "";
                     cookieinfo += "U_name=" + values_reg["U_name"] + ", ";
@@ -95,7 +92,6 @@ function reg() {
                     cookieinfo += "is_login=1";
                     setCookie(values_reg["is_login"], cookieinfo);
                     window.location.href = "index.html";
-                    console.log(values_reg["is_login"], cookieinfo);
                 }
 
 
@@ -114,18 +110,18 @@ function login() {
     for(x in params) {
         values_log[params[x].name] = params[x].value;
     }
+    values_log["U_password"] = document.getElementById("U_password").value;
 
-    values_log = JSON.stringify(values_log);
 
     $.ajax({
             url: url,
             type: "POST",
-            data: " "+values_log,
+            data: " "+JSON.stringify(values_log),
             dataType: "text",
             success:function(responseTxt, statusTxt, xhr_log) {
                 responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
                 // responseTxt = values_log;
-                 console.log(responseTxt);
+
                 var ret = JSON.parse(responseTxt);
 
                 switch (ret["@return"]) {
@@ -138,12 +134,14 @@ function login() {
                         break;
                     }
                     case ("2"): {
-                        alert("登陆成功！即将跳转至首页。");
+
                         var cookieinfo = "";
-                        cookieinfo += "U_id=" + values_reg["U_id"] + ", ";
-                        cookieinfo += "U_password=" + values_reg["U_password"] + ", ";
+                        cookieinfo += "U_id=" + values_log["U_id"] + ", ";
+                        cookieinfo += "U_password=" + values_log["U_password"] + ", ";
                         cookieinfo += "is_login=1";
                         setCookie(1, cookieinfo);
+
+                        alert("登陆成功！即将跳转至首页。");
                         window.location.href = "index.html";
                         break;
                     }
@@ -202,20 +200,27 @@ function sg_publish() {
 
 // 提交欲购物品表单
 function wg_publish() {
-    var xhr_wg = new XMLHttpRequest();
     // 获取表单中内容
     var params = $("#wgedit").serializeArray();
-
 
     var values_wg = { "op": "WG_publish" };
     for(x in params) {
         values_wg[params[x].name] = params[x].value;
     }
-
-
+    values_wg["U_id"] = getCookie(1)["U_id"];
     values_wg = JSON.stringify(values_wg);
-    xhr_wg.open("POST", url,false);
-    xhr_wg.send(" "+values_wg);
+    console.log(values_wg)
+    $.ajax({
+        url: url,
+        data:" " + values_wg,
+        dataType: "text",
+        method: "POST",
+        success: function () {
+            alert("发布成功！");
+            //window.location.href = "needs.html";
+        }
+    })
+
 }
 
 // 预览图片
@@ -231,24 +236,106 @@ function readFile() {
 }
 
 // 提交响应
-function SG_respond(goodname) {
-    var xhr_sgres = new XMLHttpRequest();
-    var values_sgres = {"op": "SG_respond", "goodname": goodname};
+function SG_respond(resInfo) {
+    var values_sgres = {"op": "SG_response"};
+    resInfo = resInfo.split(" ");
+    var SG_id = resInfo[0];
+    var U_id = resInfo[1];
+    values_sgres[SG_id] = SG_id;
+    values_sgres[U_id] = U_id;
     values_sgres = JSON.stringify(values_sgres);
-    xhr_sgres.open("POST", url,true);
-    xhr_sgres.send(" "+values_sgres);
+    $.ajax({
+        url: url,
+        data: " " + values_sgres,
+        dataType: "text",
+        method: "POST",
+        success: function (responseTxt, statusTxt, xhr_log) {
+            var btn = document.getElementById("Response");
+            btn.onclick = null;
+            btn.innerHTML = "已响应";
+        }
+    })
 }
-function WG_respond(goodname) {
-    var xhr_wgres = new XMLHttpRequest();
-    var values_wgres = {"op": "WG_respond", "goodname": goodname};
+function WG_respond(WG_id, U_id) {
+    var values_wgres = {"op": "WG_response"};
+    values_wgres["WG_id"] = parseInt(WG_id);
+    values_wgres["U_id"] = U_id;
     values_wgres = JSON.stringify(values_wgres);
-    xhr_wgres.open("POST", url,true);
-    xhr_wgres.send(" "+values_wgres);
+    $.ajax({
+        url: url,
+        data: " " + values_wgres,
+        dataType: "text",
+        method: "POST",
+    })
 }
 
 
-// index.html requesting goods from server
-function showItems(amount, items) {
+// check more item info
+function showInfo(U_id) {
+    var query_item = {"op": "SG_respond", "U_id": U_id};
+    query_item = JSON.stringify(query_item);
+    $.ajax({
+        url: url,
+        data: query_item,
+        dataType: "text",
+        method: "GET",
+        success: function (responseTxt, statusTxt, xhr_log) {
+            window.location.href = "sg_info.html";
+            responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}')+1);
+            var Item = JSON.parse(responseTxt);
+            document.getElementById("Name").innerHTML = Item["SG_name"];
+            document.getElementById("Image").src = Item["image"];
+            document.getElementById("Price").innerHTML = Item["SG_price"];
+            var Type = document.getElementById("Type");
+            switch (Item["SG_type"]) {
+                case "1": {
+                    Type.innerHTML = "食品饮品";
+                    break;
+                }
+                case "2": {
+                    Type.innerHTML = "书籍";
+                    break;
+                }
+                case "3": {
+                    Type.innerHTML = "电子产品";
+                    break;
+                }
+                case "4": {
+                    Type.innerHTML = "服饰";
+                    break;
+                }
+                case "5": {
+                    Type.innerHTML = "化妆品";
+                    break;
+                }
+                case "6": {
+                    Type.innerHTML = "运动器材";
+                    break;
+                }
+                case "7": {
+                    Type.innerHTML = "日用品";
+                    break;
+                }
+                case "8": {
+                    Type.innerHTML = "账号";
+                    break;
+                }
+                case "9": {
+                    Type.innerHTML = "其他";
+                    break;
+                }
+                default:
+                    Type.innerHTML = "其他";
+            }
+            document.getElementById("Info").innerHTML = Item["SG_info"];
+            var cookieInfo = getCookie(1);
+            document.getElementById("Response").value = Item["SG_id"] + " " + cookieInfo["U_id"];
+        }
+    })
+}
+
+// index.html requesting sg from server
+function showSG(amount, items) {
     var x = 0;
     while (x < amount) {
         var addItem1, addItem2, addItem3, addItem4;
@@ -287,7 +374,7 @@ function showItems(amount, items) {
                 "        <div class=\"card-body\">\n" +
                 "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem1["SG_name"] + "</h5>\n" +
                 "            <p class=\"price\">" + addItem1["SG_price"] + "</p>\n" +
-                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
+                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\"" + "onclick=showInfo(" + addItem1["U_id"] + ")>查看详情</a>\n" +
                 "        </div>\n" +
                 "    </div>\n";
         }
@@ -342,12 +429,11 @@ function query_SG() {
     var query_SG = {};
     query_SG["op"] = "query_SG";
     $.ajax({
-        type: 'POST',
-        url: url, // change to "./"
+        method: 'POST',
+        url: url,
         data: " " + JSON.stringify(query_SG),
+        dataType: "text",
         success: function (responseTxt, statusTxt, xhr_log) {
-            // test response
-            // responseTxt = "{\"count\":\"3\"}\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n{\"SG_id\":\"10000001\",\"SG_info\":\"magic glasses belongs to time elder.\",\"SG_name\":\"black glasses\",\"SG_price\":\"5.00\",\"SG_type\":\"1\"}\\n";
             // 去掉结尾乱码，拆分为数量和商品信息
             // console.log(responseTxt);
             responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
@@ -356,9 +442,50 @@ function query_SG() {
             responseTxt = responseTxt.substring(1, responseTxt.length-1) + "}";
             responseTxt = responseTxt.split("\n");
 
-            amount = JSON.parse(amount)
+            amount = JSON.parse(amount);
             amount = amount["count"];
-            showItems(amount, responseTxt);
+            showSG(amount, responseTxt);
+        },
+    });
+}
+
+// needs.html requesting wg from server
+function showWG(responseTxt) {
+    for(i=0;i<responseTxt.length; i++) {
+        var addedItem = JSON.parse(responseTxt[i]);
+        var cookieInfo = getCookie(1);
+        var addedTab = "        <tr>\n" +
+            "            <td>" + addedItem["WG_name"] + "</td>\n" +
+            "            <td>" + addedItem["WG_type"] + "</td>\n" +
+            "            <td>" + addedItem["WG_info"] + "</td>\n" +
+            "            <td>" + addedItem["U_id"] + "</td>\n" +
+            "            <td><btn class=\"btn btn-primary\"" + "id=WG_" + addedItem["WG_id"] +  ">申请交易</btn></td>\n" +
+            "        </tr>";
+        $(addedTab).appendTo("#wghead");
+        $("#WG_"+addedItem["WG_id"]).on("click",function () {
+            WG_respond(addedItem["WG_id"], cookieInfo["U_id"]);
+            this.innerHTML = "已响应";
+        })
+    }
+}
+function query_WG() {
+    var query_WG = {};
+    query_WG["op"] = "query_WG";
+    $.ajax({
+        url: url,
+        method: "POST",
+        data: " " + JSON.stringify(query_WG),
+        success: function (responseTxt, statusTxt, xhr_log) {
+            // 去掉结尾乱码，拆分为商品信息
+            responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
+            var amount = responseTxt.substring(0, responseTxt.indexOf('}')+1);
+            responseTxt = responseTxt.replace(amount, "");
+            responseTxt = responseTxt.substring(1, responseTxt.length-1) + "}";
+            responseTxt = responseTxt.split("\n");
+            amount = JSON.parse(amount);
+            amount = amount["count"];
+
+            showWG(responseTxt);
         },
         dataType: "text"
     });
