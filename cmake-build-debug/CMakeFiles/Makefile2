@@ -44,10 +44,10 @@ RM = /home/haozl/Downloads/clion-2019.3/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/haozl/CLionProjects/HTTPSERVER
+CMAKE_SOURCE_DIR = /home/haozl/CLionProjects/fleaMarket
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug
+CMAKE_BINARY_DIR = /home/haozl/CLionProjects/fleaMarket/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ preinstall:
 CMakeFiles/HTTPSERVER.dir/all:
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/depend
 	$(MAKE) -f CMakeFiles/HTTPSERVER.dir/build.make CMakeFiles/HTTPSERVER.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target HTTPSERVER"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target HTTPSERVER"
 .PHONY : CMakeFiles/HTTPSERVER.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HTTPSERVER.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haozl/CLionProjects/fleaMarket/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/HTTPSERVER.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haozl/CLionProjects/fleaMarket/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/HTTPSERVER.dir/rule
 
 # Convenience name for target.

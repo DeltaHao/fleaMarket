@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug"/>
+				<Option working_dir="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug"/>
+				<Option working_dir="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="HTTPSERVER">
-				<Option output="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/HTTPSERVER" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug"/>
+				<Option output="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/HTTPSERVER" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 HTTPSERVER"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 HTTPSERVER"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="HTTPSERVER/fast">
-				<Option output="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/HTTPSERVER" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug"/>
+				<Option output="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/HTTPSERVER" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,39 +67,39 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 HTTPSERVER/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 HTTPSERVER/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug"/>
+				<Option working_dir="/home/haozl/CLionProjects/fleaMarket/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/epoll.h">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/epoll.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/http.cpp">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/http.cpp">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/main.cpp">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/main.cpp">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysocket.h">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/mysocket.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/mysql.h">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/mysql.h">
 			<Option target="HTTPSERVER"/>
 		</Unit>
-		<Unit filename="/home/haozl/CLionProjects/HTTPSERVER/CMakeLists.txt">
+		<Unit filename="/home/haozl/CLionProjects/fleaMarket/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

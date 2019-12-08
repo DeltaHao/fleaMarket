@@ -1,6 +1,6 @@
 
 var url = "./";
-
+var ConcreteItemID = 0;
 
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";path=/";
@@ -77,7 +77,7 @@ function reg() {
             type: "POST",
             data: " "+values_reg_post,
             dataType: "text",
-            success:function(responseTxt, statusTxt, xhr_log) {
+            success:function(responseTxt) {
                 // responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
                 if (responseTxt == "false") {
                     alert(values_reg["ErrorInfo"]);
@@ -118,7 +118,7 @@ function login() {
             type: "POST",
             data: " "+JSON.stringify(values_log),
             dataType: "text",
-            success:function(responseTxt, statusTxt, xhr_log) {
+            success:function(responseTxt) {
                 responseTxt = responseTxt.substring(0, responseTxt.indexOf('}')+1);
                 // responseTxt = values_log;
 
@@ -184,7 +184,7 @@ function sg_publish() {
             method: "POST",
             data: " "+values_sg,
             dataType: "text",
-            success: function (responseTxt, statusTxt, xhr_log) {
+            success: function (responseTxt) {
                 if(responseTxt == "true") {
                     window.alert("发布成功!");
                     window.location.href = "index.html";
@@ -249,7 +249,7 @@ function SG_respond(resInfo) {
         data: " " + values_sgres,
         dataType: "text",
         method: "POST",
-        success: function (responseTxt, statusTxt, xhr_log) {
+        success: function (responseTxt) {
             var btn = document.getElementById("Response");
             btn.onclick = null;
             btn.innerHTML = "已响应";
@@ -271,22 +271,27 @@ function WG_respond(WG_id, U_id) {
 
 
 // check more item info
-function showInfo(U_id) {
-    var query_item = {"op": "SG_respond", "U_id": U_id};
-    query_item = JSON.stringify(query_item);
+
+function showInfo() {
+    var query_item = {};
+    query_item["op"] = "query_SG_by_G_id";
+    query_item["SG_id"] = ConcreteItemID;
+    console.log(query_item, ConcreteItemID);
+    query_item = " " + JSON.stringify(query_item);
     $.ajax({
         url: url,
         data: query_item,
         dataType: "text",
-        method: "GET",
-        success: function (responseTxt, statusTxt, xhr_log) {
-            window.location.href = "sg_info.html";
+        method: "POST",
+        success: function (responseTxt) {
+            ConcreteItemInfo = responseTxt;
+            console.log(responseTxt);
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}')+1);
             var Item = JSON.parse(responseTxt);
-            document.getElementById("Name").innerHTML = Item["SG_name"];
-            document.getElementById("Image").src = Item["image"];
-            document.getElementById("Price").innerHTML = Item["SG_price"];
-            var Type = document.getElementById("Type");
+            document.getElementById("#Name").innerHTML = Item["SG_name"];
+            document.getElementById("#Image").src = Item["image"];
+            document.getElementById("#Price").innerHTML = Item["SG_price"];
+            var Type = document.getElementById("#Type");
             switch (Item["SG_type"]) {
                 case "1": {
                     Type.innerHTML = "食品饮品";
@@ -327,105 +332,37 @@ function showInfo(U_id) {
                 default:
                     Type.innerHTML = "其他";
             }
-            document.getElementById("Info").innerHTML = Item["SG_info"];
+            document.getElementById("#Info").innerHTML = Item["SG_info"];
             var cookieInfo = getCookie(1);
-            document.getElementById("Response").value = Item["SG_id"] + " " + cookieInfo["U_id"];
+            document.getElementById("#Response").value = Item["SG_id"] + " " + cookieInfo["U_id"];
         }
     })
 }
 
-// index.html requesting sg from server
-function showSG(amount, items) {
-    var x = 0;
-    while (x < amount) {
-        var addItem1, addItem2, addItem3, addItem4;
-        if(x+3 == amount) { // 3 left to show
-            addItem1 = JSON.parse(items[x]);
-            addItem2 = JSON.parse(items[x+1]);
-            addItem3 = JSON.parse(items[x+2]);
-            addItem4 = "";
-        }
-        else if (x+2 == amount) {
-            addItem1 = JSON.parse(items[x]);
-            addItem2 = JSON.parse(items[x+1]);
-            addItem3 = "";
-            addItem4 = "";
-        }
-        else if (x+1 == amount) {
-            addItem1 = JSON.parse(items[x]);
-            addItem2 = "";
-            addItem3 = "";
-            addItem4 = "";
-        }
-        else  {
-            addItem1 = JSON.parse(items[x]);
-            addItem2 = JSON.parse(items[x+1]);
-            addItem3 = JSON.parse(items[x+2]);
-            addItem4 = JSON.parse(items[x+3]);
-        }
-        // console.log(addItem1, addItem2, addItem3, addItem4);
-        x += 4;
-        if (addItem1 == "") {
-            var addTab1 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "    </div>";
-        } else {
-            var addTab1 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=" + addItem1["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                "        <div class=\"card-body\">\n" +
-                "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem1["SG_name"] + "</h5>\n" +
-                "            <p class=\"price\">" + addItem1["SG_price"] + "</p>\n" +
-                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\"" + "onclick=showInfo(" + addItem1["U_id"] + ")>查看详情</a>\n" +
-                "        </div>\n" +
-                "    </div>\n";
-        }
-        if (addItem2 == "") {
-            var addTab2 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "    </div>";
-        } else {
-            var addTab2 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=" + addItem2["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                "        <div class=\"card-body\">\n" +
-                "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem2["SG_name"] + "</h5>\n" +
-                "            <p class=\"price\">" + addItem2["SG_price"] + "</p>\n" +
-                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                "        </div>\n" +
-                "    </div>\n";
-        }
-        if (addItem3 == "") {
-            var addTab3 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "    </div>";
-        } else {
-            var addTab3 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=" + addItem3["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                "        <div class=\"card-body\">\n" +
-                "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem3["SG_name"] + "</h5>\n" +
-                "            <p class=\"price\">" + addItem3["SG_price"] + "</p>\n" +
-                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                "        </div>\n" +
-                "    </div>\n";
-        }
-        if (addItem4 == "") {
-            var addTab4 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "    </div>";
-        } else {
-            var addTab4 = "    <div class=\"card\" style=\"float: left;width: 24rem\">\n" +
-                "        <img src=" + addItem4["image"] + " class=\"card-img-top\" alt=\"...\" height=\"180\">\n" +
-                "        <div class=\"card-body\">\n" +
-                "            <h5 class=\"card-title\" style=\"text-align: center\">" + addItem4["SG_name"] + "</h5>\n" +
-                "            <p class=\"price\">" + addItem4["SG_price"] + "</p>\n" +
-                "            <a href=\"#\" class=\"btn btn-primary\" style=\"float: right\">查看详情</a>\n" +
-                "        </div>\n" +
-                "    </div>";
-        }
-        // console.log(addTab1, addTab2, addTab3, addTab4);
-        $(addTab1).appendTo("#col1");
-        $(addTab2).appendTo("#col2");
-        $(addTab3).appendTo("#col3");
-        $(addTab4).appendTo("#col4");
-    }
 
+
+
+// index.html requesting sg from server
+
+function showSG(amount, responseTxt) {
+    for(i=0;i<responseTxt.length; i++) {
+        var addedItem = JSON.parse(responseTxt[i]);
+        var cookieInfo = getCookie(1);
+        var addedTab = "        <tr>\n" +
+            "            <td>" + addedItem["SG_name"] + "</td>\n" +
+            "            <td>" + addedItem["SG_type"] + "</td>\n" +
+            "            <td>" + addedItem["SG_info"] + "</td>\n" +
+            "            <td>" + addedItem["U_id"] + "</td>\n" +
+            "            <td><a href='sg_info.html' class=\"btn btn-primary\"" + "id=SG_" + addedItem["SG_id"] +  ">查看详情</a></td>\n" +
+            "        </tr>";
+        $(addedTab).appendTo("#sghead");
+        $("#SG_"+addedItem["SG_id"]).on("click",function () {
+            ConcreteItemID = addedItem["SG_id"];
+        });
+    }
 }
 function query_SG() {
+
     var query_SG = {};
     query_SG["op"] = "query_SG";
     $.ajax({
@@ -433,7 +370,7 @@ function query_SG() {
         url: url,
         data: " " + JSON.stringify(query_SG),
         dataType: "text",
-        success: function (responseTxt, statusTxt, xhr_log) {
+        success: function (responseTxt) {
             // 去掉结尾乱码，拆分为数量和商品信息
             // console.log(responseTxt);
             responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
@@ -441,7 +378,6 @@ function query_SG() {
             responseTxt = responseTxt.replace(amount, "");
             responseTxt = responseTxt.substring(1, responseTxt.length-1) + "}";
             responseTxt = responseTxt.split("\n");
-
             amount = JSON.parse(amount);
             amount = amount["count"];
             showSG(amount, responseTxt);
@@ -475,7 +411,7 @@ function query_WG() {
         url: url,
         method: "POST",
         data: " " + JSON.stringify(query_WG),
-        success: function (responseTxt, statusTxt, xhr_log) {
+        success: function (responseTxt) {
             // 去掉结尾乱码，拆分为商品信息
             responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}')+1);
             var amount = responseTxt.substring(0, responseTxt.indexOf('}')+1);

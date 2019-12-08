@@ -76,8 +76,12 @@ string POSTMethodResponse(string &JsonString){
         JsonString += qMysql->query("select * from Salegood;");
     }
     if(recvJsonValue["op"] == "query_SG_by_G_id"){
-        JsonString = qMysql->query("select count(*) as count from Salegood;");
-        JsonString += qMysql->query("select * from Salegood;");
+
+        string SG_id = recvJsonValue["SG_id"].toStyledString();
+
+        string sqlStr = "select * from Salegood where SG_id = "+ SG_id+";" ;
+        JsonString = qMysql->query(sqlStr);
+        cout<<sqlStr<<endl;
     }
     if(recvJsonValue["op"] == "query_WG"){
         JsonString = qMysql->query("select count(*) as count from Wantedgood;");

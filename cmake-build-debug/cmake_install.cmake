@@ -1,4 +1,4 @@
-# Install script for directory: /home/haozl/CLionProjects/HTTPSERVER
+# Install script for directory: /home/haozl/CLionProjects/fleaMarket
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/haozl/CLionProjects/HTTPSERVER/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/haozl/CLionProjects/fleaMarket/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
