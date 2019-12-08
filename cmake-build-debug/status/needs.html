@@ -40,10 +40,24 @@
                 <a class="nav-link" href="login.html" id="logstatus">登录/注册</a>
             </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索您想要的商品..." aria-label="Search" style="width: 500px" id="searchtext">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="SearchWG()">搜索</button>
+        </form>
     </div>
 </nav>
-
-
+<div class="list-group" style="float: left;margin-top: 100px;background-color: blue">
+    <a href="#" class="list-group-item list-group-item-action" onclick="query_WG()">全部</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(1)">食品饮品</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(2)">书籍</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(3)">电子产品</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(4)">服饰</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(5)">化妆品</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(6)">运动器材</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(7)">日用品</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(8)">账号</a>
+    <a href="#" class="list-group-item list-group-item-action" onclick="type_Select_WG(9)">其他</a>
+</div>
 
 <table class="table table-bordered table-hover text-center" style="width: 80%;margin-left: 10%;margin-top: 50px">
     <thead id="wghead">

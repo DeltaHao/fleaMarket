@@ -23,6 +23,8 @@ vector<string> split(string &s, const char flag){
 
 string GETMethodResponse(string &filepath){
     ifstream infile;
+    vector<string> strings = split(filepath,'?');
+    filepath = strings[0];
     if (filepath=="/") infile.open("status/index.html", ios::in);//默认打开index.html
     else infile.open("status"+filepath, ios::in);//打开文件
     if(!infile){//如果文件有误

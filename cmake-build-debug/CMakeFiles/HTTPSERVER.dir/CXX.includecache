@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/haozl/CLionProjects/fleaMarket/epoll.h
-sys/epoll.h
--
-mysocket.h
-/home/haozl/CLionProjects/fleaMarket/mysocket.h
-
 /home/haozl/CLionProjects/fleaMarket/http.cpp
 iostream
 -
@@ -27,24 +21,6 @@ json/json.h
 -
 mysql.h
 /home/haozl/CLionProjects/fleaMarket/mysql.h
-
-/home/haozl/CLionProjects/fleaMarket/main.cpp
-iostream
--
-epoll.h
-/home/haozl/CLionProjects/fleaMarket/epoll.h
-mysocket.h
-/home/haozl/CLionProjects/fleaMarket/mysocket.h
-
-/home/haozl/CLionProjects/fleaMarket/mysocket.h
-sys/socket.h
--
-arpa/inet.h
--
-unistd.h
--
-iostream
--
 
 /home/haozl/CLionProjects/fleaMarket/mysql.h
 iostream
