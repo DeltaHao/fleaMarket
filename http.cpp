@@ -198,19 +198,25 @@ string POSTMethodResponse(string &JsonString){
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
     }
-    if(recvJsonValue["op"] == "query_SG_by_User"){//查询某人发布的物品
+    if(recvJsonValue["op"] == "query_publish_by_User"){//查询某人发布的物品
         string U_id = recvJsonValue["U_id"].toStyledString();
 
         string sqlStr = "select * from Salegood where U_id = "+U_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
+        sqlStr = "select * from Wantedgood where U_id = "+U_id+";";
+        cout <<sqlStr<<endl;
+        JsonString += qMysql->query(sqlStr);
     }
-    if(recvJsonValue["op"] == "query_WG_by_User"){//查询某人发布的物品
+    if(recvJsonValue["op"] == "query_response_by_User"){//查询某人响应的物品
         string U_id = recvJsonValue["U_id"].toStyledString();
 
-        string sqlStr = "select * from Wantedgood where U_id = "+U_id+";";
+        string sqlStr = "select * from SG_response where U_id = "+U_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
+        sqlStr = "select * from WG_response where U_id = "+U_id+";";
+        cout <<sqlStr<<endl;
+        JsonString += qMysql->query(sqlStr);
     }
     if(recvJsonValue["op"] == "query_dealLog_by_User"){
         string U_id = recvJsonValue["U_id"].toStyledString();

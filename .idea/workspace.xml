@@ -13,15 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3f84e983-4f57-4e22-9756-a272d00566d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/needs.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/needs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/personal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/sg_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/sg_info.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/http.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +99,7 @@
       <workItem from="1575606478823" duration="908000" />
       <workItem from="1575607451445" duration="17620000" />
       <workItem from="1575775647062" duration="1391000" />
-      <workItem from="1575778074927" duration="5574000" />
+      <workItem from="1575778074927" duration="6118000" />
     </task>
     <servers />
   </component>
