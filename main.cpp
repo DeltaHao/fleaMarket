@@ -42,6 +42,8 @@ int main(){
                     if(recvMessage.empty()){
                         monitor->drop(i);//将该connect套接字移出监听
                         cout << "连接中断" << endl;
+                        todoNum--;//未完成事件减一
+                        if(!todoNum) break;//如果事件全部处理完成， 跳出处理下一帧
                         continue;
                     }
 

@@ -1,0 +1,4 @@
+mysqldump -u haozl -h localhost -p fleaMarket > backup.sql #备份
+
+ mysql -u haozl -p fleaMarket < backup.sql  #还原
+# 执行前需要先创建dbname数据库。

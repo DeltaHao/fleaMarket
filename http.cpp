@@ -76,6 +76,7 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "query_SG"){
         JsonString = qMysql->query("select count(*) as count from Salegood;");
         JsonString += qMysql->query("select * from Salegood;");
+        cout <<JsonString << endl;
     }
     if(recvJsonValue["op"] == "query_SG_by_G_id"){
 
@@ -166,14 +167,14 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "get_SG_response_Users"){//获得响应某物品的所有用户
         string SG_id = recvJsonValue["SG_id"].toStyledString();
 
-        string sqlStr = "select * from User inner join SG_response where SG_id="+SG_id+";";
+        string sqlStr = "select U_name, User.U_id from User , SG_response where User.U_id = SG_response.U_id and SG_id="+SG_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
     }
     if(recvJsonValue["op"] == "get_WG_response_Users"){//获得响应某物品的所有用户
         string WG_id = recvJsonValue["WG_id"].toStyledString();
 
-        string sqlStr = "select * from User inner join WG_response where WG_id="+WG_id+";";
+        string sqlStr = "select U_name, User.U_id from User , WG_response where User.U_id = WG_response.U_id and WG_id="+WG_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
     }
@@ -211,12 +212,24 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "query_response_by_User"){//查询某人响应的物品
         string U_id = recvJsonValue["U_id"].toStyledString();
 
-        string sqlStr = "select * from SG_response where U_id = "+U_id+";";
+        string sqlStr = "select Salegood.SG_id,SG_type, SG_name, SG_response_time from SG_response , Salegood where SG_response.SG_id = Salegood.SG_id and SG_response.U_id = "+U_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
-        sqlStr = "select * from WG_response where U_id = "+U_id+";";
+        sqlStr = "select Wantedgood.WG_id,WG_type, WG_name, WG_response_time from WG_response , Wantedgood where WG_response.WG_id = Wantedgood.WG_id and WG_response.U_id = "+U_id+";";
         cout <<sqlStr<<endl;
         JsonString += qMysql->query(sqlStr);
+    }
+    if(recvJsonValue["op"] == "search_SG"){
+        string keyWord = recvJsonValue["keyWord"].toStyledString();
+        string sqlStr = "SELECT * FROM Salegood WHERE SG_name REGEXP "+ keyWord +" or SG_info REGEXP "+ keyWord +";";
+        cout <<sqlStr<<endl;
+        JsonString = qMysql->query(sqlStr);
+    }
+    if(recvJsonValue["op"] == "search_WG"){
+        string keyWord = recvJsonValue["keyWord"].toStyledString();
+        string sqlStr = "SELECT * FROM Wantedgood WHERE WG_name REGEXP "+ keyWord +" or WG_info REGEXP "+ keyWord +";";
+        cout <<sqlStr<<endl;
+        JsonString = qMysql->query(sqlStr);
     }
     if(recvJsonValue["op"] == "query_dealLog_by_User"){
         string U_id = recvJsonValue["U_id"].toStyledString();

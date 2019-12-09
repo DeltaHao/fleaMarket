@@ -2,35 +2,16 @@ var url = "./";
 
 function getType(type) {
     switch (type) {
-        case "1": {
-            return "食品饮品";
-        }
-        case "2": {
-            return "书籍";
-        }
-        case "3": {
-            return "电子产品";
-        }
-        case "4": {
-            return "服饰";
-        }
-        case "5": {
-            return "化妆品";
-        }
-        case "6": {
-            return "运动器材";
-        }
-        case "7": {
-            return "日用品";
-        }
-        case "8": {
-            return "账号";
-        }
-        case "9": {
-            return "其他";
-        }
-        default:
-            return "其他";
+        case "1": return "食品饮品";
+        case "2": return "书籍";
+        case "3": return "电子产品";
+        case "4": return "服饰";
+        case "5": return "化妆品";
+        case "6": return "运动器材";
+        case "7": return "日用品";
+        case "8": return "账号";
+        case "9": return "其他";
+        default:  return "其他";
     }
 }
 // cookie相关操作
@@ -294,25 +275,34 @@ function WG_respond(WG_id, U_id) {
     })
 }
 
+function Confirm(Item_ID, Publisher_ID, Responsor_ID) {
+    var confirm_item = { "op": "", "SG_id": Item_ID, "Seller_id": Publisher_ID, "Buyer_id": Responsor_ID };
+    confirm_item = " " + JSON.stringify(confirm_item);
+    $.ajax({
+        url: url,
+        method: "POST",
+        data: confirm_item,
+        dataType: "text"
+    });
+}
+
 // 商品详情页内容的显示
 function showInfo() {
-    var query_item = {};
+    // 商品信息的显示
+    var query_item = {}, query_responsor = {};
     query_item["op"] = "query_SG_by_G_id";
     query_item["SG_id"] = parseInt(document.location.href.split('?')[1]);
-
-    console.log(query_item);
     query_item = " " + JSON.stringify(query_item);
+    var PublisherID;
     $.ajax({
         url: url,
         data: query_item,
         dataType: "text",
         method: "POST",
         success: function (responseTxt) {
-            ConcreteItemInfo = responseTxt;
-
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             var Item = JSON.parse(responseTxt);
-            console.log(Item["SG_name"]);
+            PublisherID = Item["U_id"];
             document.getElementById("Name").innerHTML = Item["SG_name"];
             document.getElementById("Image").src = Item["image"];
             document.getElementById("Price").innerHTML = Item["SG_price"];
@@ -322,22 +312,59 @@ function showInfo() {
             $("#Response").on("click", function () {
                 SG_respond(Item["SG_id"], cookieInfo["U_id"]);
                 this.innerHTML = "已响应";
-            })
+            });
+        }
+    });
+    // 显示响应者，若是发布者自己浏览则额外显示确认按钮
+    query_responsor["op"] = "get_SG_response_Users";
+    query_responsor["SG_id"] = parseInt(document.location.href.split('?')[1]);
+    query_responsor = " " + JSON.stringify(query_responsor);
+    $.ajax({
+        url: url,
+        method: "POST",
+        data: query_responsor,
+        dataType: "text",
+        success: function (responseTxt) {
+            responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
+            responseTxt = responseTxt.split('\n');
+            for(i = 0; i < responseTxt.length; i++) {
+                var responsors = JSON.parse(responseTxt[i]);
+                if(getCookie(1)["U_id"] == PublisherID) {
+                    var addTab = "        <tr name='responsor'>\n" +
+                        "            <td>" + responsors["U_name"] + "</td>\n" +
+                        "            <td>" + responsors["U_id"] + "</td>\n" +
+                        "            <td><button id='Responsor_" + responsors["U_id"] + "'>确认交易完成</button></td>\n" +
+                        "        </tr>";
+                    $("#responsor").append(addTab);
+                    $("#Responsor_" + responsors["U_id"]).on("click", function () {
+                        // 物品id，发布者id，响应者id
+                        Confirm(parseInt(document.location.href.split('?')[1]), getCookie(1)["U_id"], responsors["U_id"]);
+                    })
+                }
+                else {
+                    var addTab = "        <tr name='responsor'>\n" +
+                        "            <td>" + responsors["U_name"] + "</td>\n" +
+                        "            <td>" + responsors["U_id"] + "</td>\n" +
+                        "        </tr>";
+                    $("#responsor").append(addTab);
+                }
+            }
         }
     })
+
 }
 
 // index页内容的显示
 function showSG(amount, responseTxt) {
     for (i = 0; i < responseTxt.length; i++) {
-        var addedItem = JSON.parse(responseTxt[i]);
+        var responsors = JSON.parse(responseTxt[i]);
         var cookieInfo = getCookie(1);
         var addedTab = "        <tr name='SGitem'>\n" +
-            "            <td>" + addedItem["SG_name"] + "</td>\n" +
-            "            <td>" + getType(addedItem["SG_type"]) + "</td>\n" +
-            "            <td>" + addedItem["SG_info"] + "</td>\n" +
-            "            <td>" + addedItem["U_id"] + "</td>\n" +
-            "            <td><a href='sg_info.html?"+addedItem["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + addedItem["SG_id"] + ">查看详情</a></td>\n" +
+            "            <td>" + responsors["SG_name"] + "</td>\n" +
+            "            <td>" + getType(responsors["SG_type"]) + "</td>\n" +
+            "            <td>" + responsors["SG_info"] + "</td>\n" +
+            "            <td>" + responsors["U_id"] + "</td>\n" +
+            "            <td><a href='sg_info.html?"+responsors["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + responsors["SG_id"] + ">查看详情</a></td>\n" +
             "        </tr>";
         $(addedTab).appendTo("#sghead");
 
@@ -372,18 +399,18 @@ function query_SG() {
 // needs页内容的显示
 function showWG(responseTxt) {
     for (i = 0; i < responseTxt.length; i++) {
-        var addedItem = JSON.parse(responseTxt[i]);
+        var responsors = JSON.parse(responseTxt[i]);
         var cookieInfo = getCookie(1);
-        var addedTab = "        <tr>\n" +
-            "            <td>" + addedItem["WG_name"] + "</td>\n" +
-            "            <td>" + addedItem["WG_type"] + "</td>\n" +
-            "            <td>" + addedItem["WG_info"] + "</td>\n" +
-            "            <td>" + addedItem["U_id"] + "</td>\n" +
-            "            <td><btn class=\"btn btn-primary\"" + "name=\"WGitem\" id=WG_" + addedItem["WG_id"] + ">申请交易</btn></td>\n" +
+        var addedTab = "        <tr name='WGitem'>\n" +
+            "            <td>" + responsors["WG_name"] + "</td>\n" +
+            "            <td>" + getType(responsors["WG_type"]) + "</td>\n" +
+            "            <td>" + responsors["WG_info"] + "</td>\n" +
+            "            <td>" + responsors["U_id"] + "</td>\n" +
+            "            <td><btn class=\"btn btn-primary\"" + " id=WG_" + responsors["WG_id"] + ">申请交易</btn></td>\n" +
             "        </tr>";
         $(addedTab).appendTo("#wghead");
-        $("#WG_" + addedItem["WG_id"]).on("click", function () {
-            WG_respond(addedItem["WG_id"], cookieInfo["U_id"]);
+        $("#WG_" + responsors["WG_id"]).on("click", function () {
+            WG_respond(responsors["WG_id"], cookieInfo["U_id"]);
             this.innerHTML = "已响应";
         })
     }
@@ -398,6 +425,7 @@ function query_WG() {
         method: "POST",
         data: " " + JSON.stringify(query_WG),
         success: function (responseTxt) {
+            $("[name='WGitem']").remove();
             // 去掉结尾乱码，拆分为商品信息
             responseTxt = responseTxt.substring(0, responseTxt.lastIndexOf('}') + 1);
             var amount = responseTxt.substring(0, responseTxt.indexOf('}') + 1);
@@ -415,32 +443,30 @@ function query_WG() {
 
 // index页的搜索功能
 function SearchSG() {
-    var searchText = document.getElementById("#searchtext").value;
     var search_SG = {};
     // 填入方法和字段
-    search_SG["op"] = "";
-    search_SG["?"] = "";
+    search_SG["op"] = "search_SG";
+    search_SG["keyWord"] = document.getElementById("searchtext").value;
     search_SG = " " + JSON.stringify(search_SG);
+    $("[name='SGitem']").remove();
     $.ajax({
         url: url,
         method: "POST",
         data: search_SG,
         dataType: "text",
         success: function (responseTxt) {
+
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             responseTxt = responseTxt.split("\n");
-            for (item in document.getElementsByName("SGitem")) {
-                item.remove();
-            }
             for (i = 0; i < responseTxt.length; i++) {
-                var addedItem = JSON.parse(responseTxt[i]);
+                var responsors = JSON.parse(responseTxt[i]);
                 var cookieInfo = getCookie(1);
-                var addedTab = "        <tr>\n" +
-                    "            <td>" + addedItem["SG_name"] + "</td>\n" +
-                    "            <td>" + addedItem["SG_type"] + "</td>\n" +
-                    "            <td>" + addedItem["SG_info"] + "</td>\n" +
-                    "            <td>" + addedItem["U_id"] + "</td>\n" +
-                    "            <td><a href='sg_info.html' class=\"btn btn-primary\"" + "name=\"SGitem\" id=SG_" + addedItem["SG_id"] + ">查看详情</a></td>\n" +
+                var addedTab = "        <tr name = 'SGitem'>\n" +
+                    "            <td>" + responsors["SG_name"] + "</td>\n" +
+                    "            <td>" + getType(responsors["SG_type"]) + "</td>\n" +
+                    "            <td>" + responsors["SG_info"] + "</td>\n" +
+                    "            <td>" + responsors["U_id"] + "</td>\n" +
+                    "            <td><a href='sg_info.html?"+responsors["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + responsors["SG_id"] + ">查看详情</a></td>\n" +
                     "        </tr>";
                 $(addedTab).appendTo("#sghead");
 
@@ -451,11 +477,10 @@ function SearchSG() {
 
 // needs页的搜索功能
 function SearchWG() {
-    var searchText = document.getElementById("#searchtext").value;
     var search_WG = {};
     // 填入方法和字段
-    search_WG["op"] = "";
-    search_WG["?"] = "";
+    search_WG["op"] = "search_WG";
+    search_WG["?"] = document.getElementById("#searchtext").value;
     search_WG = " " + JSON.stringify(search_WG);
     $.ajax({
         url: url,
@@ -463,24 +488,22 @@ function SearchWG() {
         data: search_WG,
         dataType: "text",
         success: function (responseTxt) {
+            $("[name='WGitem']").remove();
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             responseTxt = responseTxt.split("\n");
-            for (item in document.getElementsByName("WGitem")) {
-                item.remove();
-            }
             for (i = 0; i < responseTxt.length; i++) {
-                var addedItem = JSON.parse(responseTxt[i]);
+                var responsors = JSON.parse(responseTxt[i]);
                 var cookieInfo = getCookie(1);
                 var addedTab = "        <tr>\n" +
-                    "            <td>" + addedItem["WG_name"] + "</td>\n" +
-                    "            <td>" + addedItem["WG_type"] + "</td>\n" +
-                    "            <td>" + addedItem["WG_info"] + "</td>\n" +
-                    "            <td>" + addedItem["U_id"] + "</td>\n" +
-                    "            <td><btn class=\"btn btn-primary\"" + "name=\"WGitem\" id=WG_" + addedItem["WG_id"] + ">申请交易</btn></td>\n" +
+                    "            <td>" + responsors["WG_name"] + "</td>\n" +
+                    "            <td>" + responsors["WG_type"] + "</td>\n" +
+                    "            <td>" + responsors["WG_info"] + "</td>\n" +
+                    "            <td>" + responsors["U_id"] + "</td>\n" +
+                    "            <td><btn class=\"btn btn-primary\"" + "name=\"WGitem\" id=WG_" + responsors["WG_id"] + ">申请交易</btn></td>\n" +
                     "        </tr>";
                 $(addedTab).appendTo("#wghead");
-                $("#WG_" + addedItem["WG_id"]).on("click", function () {
-                    WG_respond(addedItem["WG_id"], cookieInfo["U_id"]);
+                $("#WG_" + responsors["WG_id"]).on("click", function () {
+                    WG_respond(responsors["WG_id"], cookieInfo["U_id"]);
                     this.innerHTML = "已响应";
                 })
             }
@@ -503,14 +526,14 @@ function type_Select_SG(type) {
             responseTxt = responseTxt.split("\n");
             $("[name='SGitem']").remove();
             for (i = 0; i < responseTxt.length; i++) {
-                var addedItem = JSON.parse(responseTxt[i]);
+                var responsors = JSON.parse(responseTxt[i]);
                 var cookieInfo = getCookie(1);
                 var addedTab = "        <tr name='SGitem'>\n" +
-                    "            <td>" + addedItem["SG_name"] + "</td>\n" +
-                    "            <td>" + getType(addedItem["SG_type"]) + "</td>\n" +
-                    "            <td>" + addedItem["SG_info"] + "</td>\n" +
-                    "            <td>" + addedItem["U_id"] + "</td>\n" +
-                    "            <td><a href='sg_info.html' class=\"btn btn-primary\"" + " id=SG_" + addedItem["SG_id"] + ">查看详情</a></td>\n" +
+                    "            <td>" + responsors["SG_name"] + "</td>\n" +
+                    "            <td>" + getType(responsors["SG_type"]) + "</td>\n" +
+                    "            <td>" + responsors["SG_info"] + "</td>\n" +
+                    "            <td>" + responsors["U_id"] + "</td>\n" +
+                    "            <td><a href='sg_info.html?"+responsors["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + responsors["SG_id"] + ">查看详情</a></td>\n" +
                     "        </tr>";
                 $(addedTab).appendTo("#sghead");
             }
@@ -526,25 +549,24 @@ function type_Select_WG(type) {
         data: fillter_wg,
         dataType: "text",
         success: function (responseTxt) {
+            $("[name='WGitem']").remove();
             console.log(responseTxt);
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             responseTxt = responseTxt.split("\n");
-            for (item in document.getElementsByName("WGitem")) {
-                item.remove();
-            }
+            $("[name='WGitem']").remove();
             for (i = 0; i < responseTxt.length; i++) {
-                var addedItem = JSON.parse(responseTxt[i]);
+                var responsors = JSON.parse(responseTxt[i]);
                 var cookieInfo = getCookie(1);
-                var addedTab = "        <tr>\n" +
-                    "            <td>" + addedItem["WG_name"] + "</td>\n" +
-                    "            <td>" + addedItem["WG_type"] + "</td>\n" +
-                    "            <td>" + addedItem["WG_info"] + "</td>\n" +
-                    "            <td>" + addedItem["U_id"] + "</td>\n" +
-                    "            <td><btn class=\"btn btn-primary\"" + "name=\"WGitem\" id=WG_" + addedItem["WG_id"] + ">申请交易</btn></td>\n" +
+                var addedTab = "        <tr name='WGitem'>\n" +
+                    "            <td>" + responsors["WG_name"] + "</td>\n" +
+                    "            <td>" + getType(responsors["WG_type"]) + "</td>\n" +
+                    "            <td>" + responsors["WG_info"] + "</td>\n" +
+                    "            <td>" + responsors["U_id"] + "</td>\n" +
+                    "            <td><btn class=\"btn btn-primary\"" + " id=WG_" + responsors["WG_id"] + ">申请交易</btn></td>\n" +
                     "        </tr>";
                 $(addedTab).appendTo("#wghead");
-                $("#WG_" + addedItem["WG_id"]).on("click", function () {
-                    WG_respond(addedItem["WG_id"], cookieInfo["U_id"]);
+                $("#WG_" + responsors["WG_id"]).on("click", function () {
+                    WG_respond(responsors["WG_id"], cookieInfo["U_id"]);
                     this.innerHTML = "已响应";
                 })
             }
@@ -568,10 +590,10 @@ function query_User() {
             document.getElementById("U_name").innerHTML ="用户名："+ responseTxt["U_name"];
             document.getElementById("U_id").innerHTML ="QQ:"+ responseTxt["U_id"];
         }
-    })
+    });
 
     // 发布的商品
-    var query_Item_Published = {"op": "query_SG_by_User", "U_id": getCookie(1)["U_id"]};
+    var query_Item_Published = {"op": "query_publish_by_User", "U_id": getCookie(1)["U_id"]};
     query_Item_Published = " " + JSON.stringify(query_Item_Published);
     $.ajax({
         url: url,
@@ -582,20 +604,40 @@ function query_User() {
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             responseTxt = responseTxt.split('\n');
             for(i = 0; i < responseTxt.length; i++) {
-                addedItem= JSON.parse(responseTxt[i]);
-                $("#item_published").append(
-                    "        <tr>\n" +
-                    "            <td>" + addedItem["SG_name"]+ "</td>\n" +
-                    "            <td><button value='" + addedItem["SG_id"] + "' onclick=\"show_Responsor(this.value)\">显示响应者</button></td>\n" +
-                    "            <td><button>交易状态</button></td>\n" +
-                    "        </tr>"
-                );
+                var responsors= JSON.parse(responseTxt[i]);
+                if(responsors["SG_id"] != null) {
+                    $("#item_published").append(
+                        "        <tr>\n" +
+                        "            <td> 待售商品 </td>\n" +
+                        "            <td>" + responsors["SG_name"]+ "</td>\n" +
+                        "            <td>" + getType(responsors["SG_type"]) + "</td>\n" +
+                        "            <td>" + responsors["SG_publish_time"] + "</td>\n" +
+                        "            <td><a href='sg_info.html?"+responsors["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + responsors["SG_id"] + ">查看详情</a></td>\n" +
+                        "        </tr>"
+                    );
+                }
+                else {
+                    $("#item_published").append(
+                        "        <tr name='WGitem'>\n" +
+                        "            <td> 欲购商品 </td>\n" +
+                        "            <td>" + responsors["WG_name"] + "</td>\n" +
+                        "            <td>" + getType(responsors["WG_type"]) + "</td>\n" +
+                        "            <td>" + responsors["WG_publish_time"] + "</td>\n" +
+                        "            <td><btn class=\"btn btn-primary\"" + " id=WG_" + responsors["WG_id"] + ">申请交易</btn></td>\n" +
+                        "        </tr>"
+                    );
+                    $("#WG_" + responsors["WG_id"]).on("click", function () {
+                        WG_respond(responsors["WG_id"], cookieInfo["U_id"]);
+                        this.innerHTML = "已响应";
+                    })
+                }
+
             }
         }
-    })
+    });
 
     // 响应的商品
-    var queryItem_Responded = {"op": "", "U_id": getCookie(1)["U_id"]};
+    var queryItem_Responded = {"op": "query_response_by_User", "U_id": getCookie(1)["U_id"]};
     queryItem_Responded = " " + JSON.stringify(queryItem_Responded);
     $.ajax({
         url: url,
@@ -605,32 +647,36 @@ function query_User() {
         success: function (responseTxt) {
             responseTxt = responseTxt.substring(responseTxt.indexOf('{'), responseTxt.lastIndexOf('}') + 1);
             responseTxt = responseTxt.split('\n');
+
             for(i = 0; i < responseTxt.length; i++) {
-                addedItem= JSON.parse(responseTxt[i]);
-                $("#trading_record").append(
-                    "    <tr>\n" +
-                    "        <td>" + addedItem["SG_name"] + "</td>\n" +
-                    "        <td>" + addedItem["U_id"] + "</td>\n" +
-                    "        <td>" + "status" + "</td>\n" +
-                    "    </tr>"
-                );
+                responsors= JSON.parse(responseTxt[i]);
+                if(responsors["SG_id"] != null) {
+                    $("#item_responded").append(
+                        "        <tr>\n" +
+                        "            <td> 待售商品 </td>\n" +
+                        "            <td>" + responsors["SG_name"]+ "</td>\n" +
+                        "            <td>" + getType(responsors["SG_type"]) + "</td>\n" +
+                        "            <td>" + responsors["SG_response_time"] + "</td>\n" +
+                        "            <td><a href='sg_info.html?"+responsors["SG_id"]+"' class=\"btn btn-primary\"" + " id=SG_" + responsors["SG_id"] + ">查看详情</a></td>\n" +
+                        "        </tr>"
+                    );
+                }
+                else {
+                    $("#item_responded").append(
+                        "        <tr name='WGitem'>\n" +
+                        "            <td> 欲购商品 </td>\n" +
+                        "            <td>" + responsors["WG_name"] + "</td>\n" +
+                        "            <td>" + getType(responsors["WG_type"]) + "</td>\n" +
+                        "            <td>" + responsors["WG_response_time"] + "</td>\n" +
+                        "            <td><btn class=\"btn btn-primary\"" + " id=WG_" + responsors["WG_id"] + ">申请交易</btn></td>\n" +
+                        "        </tr>"
+                    );
+                    $("#WG_" + responsors["WG_id"]).on("click", function () {
+                        WG_respond(responsors["WG_id"], cookieInfo["U_id"]);
+                        this.innerHTML = "已响应";
+                    })
+                }
             }
         }
-    })
-}
-
-// 发布的商品显示
-function show_Item_Pubilshed() {
-
-}
-
-
-// 发布的商品显示
-function show_Item_Responded() {
-
-}
-
-// 显示当前商品的响应者
-function show_Responsor() {
-    
+    });
 }
