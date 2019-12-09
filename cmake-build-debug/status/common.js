@@ -781,27 +781,15 @@ function query_User() {
             for(i = 0; i < responseTxt.length; i++) {
                 console.log(responseTxt[i]);
                 var Item = JSON.parse(responseTxt[i]);
-                console.log(Item);
-                if (Item["SG_name"]) {
                     $("#trading_record").append(
                         "        <tr>\n" +
-                        "            <td>" + Item["SG_name"]+ "</td>\n" +
+                        "            <td>" + Item["G_id"]+ "</td>\n" +
                         "            <td>" + Item["buyer_id"] + "</td>\n" +
                         "            <td>" + Item["seller_id"] + "</td>\n" +
                         "            <td>" + Item["deal_time"] + "</td>\n" +
                         "        </tr>"
                     );
-                }
-                else {
-                    $("#trading_record").append(
-                        "        <tr>\n" +
-                        "            <td>" + Item["WG_name"]+ "</td>\n" +
-                        "            <td>" + Item["buyer_id"] + "</td>\n" +
-                        "            <td>" + Item["seller_id"] + "</td>\n" +
-                        "            <td>" + Item["deal_time"] + "</td>\n" +
-                        "        </tr>"
-                    );
-                }
+
 
             }
         }

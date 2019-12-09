@@ -236,12 +236,9 @@ string POSTMethodResponse(string &JsonString){
     if(recvJsonValue["op"] == "query_dealLog_by_User"){
         string U_id = recvJsonValue["U_id"].toStyledString();
 
-        string sqlStr = "select * from Deallog inner join Salegood where buyer_id = "+U_id+" or seller_id="+U_id+";";
+        string sqlStr = "select * from Deallog where buyer_id = "+U_id+" or seller_id="+U_id+";";
         cout <<sqlStr<<endl;
         JsonString = qMysql->query(sqlStr);
-
-        sqlStr = "select * from Deallog inner join Wantedgood where buyer_id = "+U_id+" or seller_id="+U_id+";";
-        JsonString += qMysql->query(sqlStr);
     }
 
 

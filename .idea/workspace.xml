@@ -13,17 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f84e983-4f57-4e22-9756-a272d00566d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/HTTPSERVER.dir/http.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/HTTPSERVER" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/needs.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/needs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/personal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/sg_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/sg_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/sg_publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/sg_publish.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/status/wg_publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/status/wg_publish.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/http.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +103,7 @@
       <workItem from="1575607451445" duration="17620000" />
       <workItem from="1575775647062" duration="1391000" />
       <workItem from="1575778074927" duration="18154000" />
-      <workItem from="1575897598467" duration="5206000" />
+      <workItem from="1575897598467" duration="6032000" />
     </task>
     <servers />
   </component>
@@ -136,26 +127,26 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="737" height="748" key="GridCell.Tab.0.bottom" timestamp="1575902745955">
+    <state width="737" height="493" key="GridCell.Tab.0.bottom" timestamp="1575903173141">
       <screen x="0" y="27" width="1865" height="899" />
     </state>
     <state width="1032" height="486" key="GridCell.Tab.0.bottom/0.27.1078.1688@0.27.1078.1688" timestamp="1575452714645" />
-    <state width="737" height="748" key="GridCell.Tab.0.bottom/0.27.1865.899@0.27.1865.899" timestamp="1575902745955" />
-    <state width="737" height="748" key="GridCell.Tab.0.center" timestamp="1575902745953">
+    <state width="737" height="493" key="GridCell.Tab.0.bottom/0.27.1865.899@0.27.1865.899" timestamp="1575903173141" />
+    <state width="737" height="493" key="GridCell.Tab.0.center" timestamp="1575903173140">
       <screen x="0" y="27" width="1865" height="899" />
     </state>
     <state width="1032" height="486" key="GridCell.Tab.0.center/0.27.1078.1688@0.27.1078.1688" timestamp="1575452714644" />
-    <state width="737" height="748" key="GridCell.Tab.0.center/0.27.1865.899@0.27.1865.899" timestamp="1575902745953" />
-    <state width="737" height="748" key="GridCell.Tab.0.left" timestamp="1575902745953">
+    <state width="737" height="493" key="GridCell.Tab.0.center/0.27.1865.899@0.27.1865.899" timestamp="1575903173140" />
+    <state width="737" height="493" key="GridCell.Tab.0.left" timestamp="1575903173139">
       <screen x="0" y="27" width="1865" height="899" />
     </state>
     <state width="1032" height="486" key="GridCell.Tab.0.left/0.27.1078.1688@0.27.1078.1688" timestamp="1575452714644" />
-    <state width="737" height="748" key="GridCell.Tab.0.left/0.27.1865.899@0.27.1865.899" timestamp="1575902745953" />
-    <state width="737" height="748" key="GridCell.Tab.0.right" timestamp="1575902745954">
+    <state width="737" height="493" key="GridCell.Tab.0.left/0.27.1865.899@0.27.1865.899" timestamp="1575903173139" />
+    <state width="737" height="493" key="GridCell.Tab.0.right" timestamp="1575903173140">
       <screen x="0" y="27" width="1865" height="899" />
     </state>
     <state width="1032" height="486" key="GridCell.Tab.0.right/0.27.1078.1688@0.27.1078.1688" timestamp="1575452714645" />
-    <state width="737" height="748" key="GridCell.Tab.0.right/0.27.1865.899@0.27.1865.899" timestamp="1575902745954" />
+    <state width="737" height="493" key="GridCell.Tab.0.right/0.27.1865.899@0.27.1865.899" timestamp="1575903173140" />
     <state width="1819" height="282" key="GridCell.Tab.1.bottom" timestamp="1575899658851">
       <screen x="0" y="27" width="1865" height="899" />
     </state>
