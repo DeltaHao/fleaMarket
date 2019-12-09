@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>发布商品</title>
 
-    <script src="common.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="common.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        window.onload = checkLog;
+    </script>
 </head>
 <body>
 
@@ -20,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item headline">
-                <a class="nav-link" href="index.html"> 首页 </a>
+                <a class="nav-link" href="index.html">待售商品</a>
             </li>
             <li class="nav-item headline">
                 <a class="nav-link" href="needs.html">需求商品</a>
@@ -40,7 +44,6 @@
         </ul>
     </div>
 </nav>
-
 <div class="py-5 text-center">
     <h2>欲售物品发布</h2>
     <p class="lead">请填写您想出售的物品信息</p>
@@ -112,7 +115,4 @@
 </div>
 </div>
 </body>
-<script>
-    window.onload = checkLogStatus();
-</script>
 </html>

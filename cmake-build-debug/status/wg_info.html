@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>商品信息</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="common.js"></script>
+    <script>
+        window.onload = showInfo_WG;
+    </script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light title">
+    <a class="navbar-brand title">二手交易平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item headline">
+                <a class="nav-link" href="index.html">待售商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="needs.html">需求商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="sg_publish.html">发布商品</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="wg_publish.html">发布需求</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="personal.html">个人中心</a>
+            </li>
+            <li class="nav-item headline">
+                <a class="nav-link" href="login.html" id="logstatus">登录/注册</a>
+            </li>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索您想要的商品..." aria-label="Search" style="width: 500px" id="searchtext">
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0"  onclick="SearchSG()">搜索</button>
+    </div>
+</nav>
+<main role="main" class="container">
+    <div class="media" style="margin-left: 400px; margin-right: auto; margin-top: 100px;">
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <div class="media-body">
+                <h3 class="mt-0" id="Name">需求物品</h3>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">类型</strong>
+                    <b id="Type"></b>
+                </p>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">描述</strong>
+                    <b id="Info"></b>
+                </p>
+            </div>
+            <small class="d-block text-right mt-3">
+                <button id="Response">我想出售</button>
+            </small>
+        </div>
+    </div>
+</main>
+<table class="table table-bordered table-hover text-center" style="width: 80%;margin-left: 10%;margin-top: 30px">
+    <thead id="responsor">
+    <tr>
+        <th style="width: 25%">响应者</th>
+        <th style="width: 15%">QQ</th>
+        <th style="width: 15%"></th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</body>
+</html>

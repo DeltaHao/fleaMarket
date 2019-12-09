@@ -8,7 +8,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="common.js"></script>
     <script>
-        window.onload = showInfo;
+        window.onload = showInfo_SG;
     </script>
 </head>
 
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item headline">
-                <a class="nav-link" href="index.html"> 首页 </a>
+                <a class="nav-link" href="index.html">待售商品</a>
             </li>
             <li class="nav-item headline">
                 <a class="nav-link" href="needs.html">需求商品</a>
@@ -39,6 +39,10 @@
                 <a class="nav-link" href="login.html" id="logstatus">登录/注册</a>
             </li>
         </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索您想要的商品..." aria-label="Search" style="width: 500px" id="searchtext">
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0"  onclick="SearchSG()">搜索</button>
     </div>
 </nav>
 <main role="main" class="container">
@@ -68,7 +72,7 @@
             </p>
         </div>
         <small class="d-block text-right mt-3">
-            <button onclick="SG_respond(this.value)" id="Response">我想购买</button>
+            <button id="Response">我想购买</button>
         </small>
     </div>
     </div>
@@ -83,7 +87,5 @@
     </thead>
     <tbody></tbody>
 </table>
-
-
 </body>
 </html>
