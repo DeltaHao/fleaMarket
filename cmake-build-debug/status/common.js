@@ -394,7 +394,7 @@ function showInfo_WG() {
             document.getElementById("Info").innerHTML = Item["WG_info"];
             var cookieInfo = getCookie(1);
             $("#Response").on("click", function () {
-                SG_respond(Item["WG_id"], cookieInfo["U_id"]);
+                WG_respond(Item["WG_id"], cookieInfo["U_id"]);
                 this.innerHTML = "已响应";
             });
         }

@@ -46,7 +46,6 @@ int main(){
                         if(!todoNum) break;//如果事件全部处理完成， 跳出处理下一帧
                         continue;
                     }
-
                     //解析http请求报文
                     string sendMessage = getResponseMessage(recvMessage);
                     Send(sendMessage, monitor->Set[i].data.fd);

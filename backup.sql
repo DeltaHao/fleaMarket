@@ -85,6 +85,7 @@ CREATE TABLE `Deallog` (
 
 LOCK TABLES `Deallog` WRITE;
 /*!40000 ALTER TABLE `Deallog` DISABLE KEYS */;
+INSERT INTO `Deallog` VALUES ('12197350111','12197350111',1,'2019-12-09 16:58:54'),(NULL,NULL,1000000000,'2019-12-09 17:08:11'),('620123777','12197350111',2,'2019-12-09 22:18:43'),('12197350111','12197350111',1,'2019-12-09 22:50:20'),('12197350111','12197350111',3,'2019-12-09 22:50:35'),('351785809','620123777',2,'2019-12-10 21:29:11');
 /*!40000 ALTER TABLE `Deallog` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -100,8 +101,8 @@ DELIMITER ;;
 after insert on Deallog
 for each row   
 begin  
-    DELETE FROM SG_good WHERE SG_id=new.G_id;
-    DELETE FROM WG_good WHERE WG_id=new.G_id;
+    DELETE FROM Salegood WHERE SG_id=new.G_id;
+    DELETE FROM Wantedgood WHERE WG_id=new.G_id;
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -153,7 +154,7 @@ CREATE TABLE `SG_response` (
 
 LOCK TABLES `SG_response` WRITE;
 /*!40000 ALTER TABLE `SG_response` DISABLE KEYS */;
-INSERT INTO `SG_response` VALUES ('12197350111',1000000000,'2019-12-09 14:23:05');
+INSERT INTO `SG_response` VALUES ('12197350111',1000000001,'2019-12-09 16:04:57'),('620123777',4,'2019-12-10 21:13:00');
 /*!40000 ALTER TABLE `SG_response` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,11 +171,11 @@ CREATE TABLE `Salegood` (
   `SG_info` varchar(500) DEFAULT NULL,
   `SG_type` tinyint(4) DEFAULT NULL,
   `SG_price` decimal(7,2) DEFAULT NULL,
-  `image` mediumblob,
+  `image` mediumblob NOT NULL,
   `U_id` char(11) DEFAULT NULL,
   `SG_publish_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`SG_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +184,6 @@ CREATE TABLE `Salegood` (
 
 LOCK TABLES `Salegood` WRITE;
 /*!40000 ALTER TABLE `Salegood` DISABLE KEYS */;
-INSERT INTO `Salegood` VALUES (1000000000,'black glasses','magic glasses belongs to the time elder',1,5.00,_binary 'kjlsadhlkashdjdalks','12197350111','2019-12-09 14:23:05');
 /*!40000 ALTER TABLE `Salegood` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -229,7 +229,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES ('12197350111','haozl','123456','i am the root, i am the god');
+INSERT INTO `User` VALUES ('12197350111','haozl','123456','i am the root, i am the god'),('351785809','lsy','123456','dasas'),('620123777','æ´ªå¹¿æ³½','123456','æˆ‘æ˜¯éƒæ­£äº®çš„å„¿å­\r\n');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +255,7 @@ CREATE TABLE `WG_response` (
 
 LOCK TABLES `WG_response` WRITE;
 /*!40000 ALTER TABLE `WG_response` DISABLE KEYS */;
-INSERT INTO `WG_response` VALUES ('12197350111',1,'2019-12-09 14:23:05','5.00');
+INSERT INTO `WG_response` VALUES ('620123777',4,'2019-12-10 21:21:32','0');
 /*!40000 ALTER TABLE `WG_response` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +274,7 @@ CREATE TABLE `Wantedgood` (
   `U_id` char(11) DEFAULT NULL,
   `WG_publish_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`WG_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +283,7 @@ CREATE TABLE `Wantedgood` (
 
 LOCK TABLES `Wantedgood` WRITE;
 /*!40000 ALTER TABLE `Wantedgood` DISABLE KEYS */;
-INSERT INTO `Wantedgood` VALUES (1,'black glasses','magic glasses belongs to the time elder',1,'12197350111','2019-12-09 14:23:05');
+INSERT INTO `Wantedgood` VALUES (4,'åžƒåœ¾è¢‹','è£…åžƒåœ¾çš„',4,'351785809','2019-12-10 21:11:34');
 /*!40000 ALTER TABLE `Wantedgood` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -316,4 +316,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-09 14:25:47
+-- Dump completed on 2019-12-10 21:32:07
