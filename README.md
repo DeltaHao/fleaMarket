@@ -5,5 +5,5 @@
 - 采用epoll，能承受校内ip的高并发访问
 - 利用json进行前后端数据的传输，支持传输图片
 - 使用mysql数据库保存用户与商品信息
-- 前端开发使用了bootscrap+jQuery框架
+- 前端开发使用了bootscrap+jQuery框架  
 (注：后端代码在backEnd分支内)
